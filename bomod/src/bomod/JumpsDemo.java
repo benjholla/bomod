@@ -21,7 +21,7 @@ public class JumpsDemo extends JFrame {
 	}
 
 	private void init() {
-		setTitle("BOMod Spock Demo");
+		setTitle("BOMod Jumps Demo");
 		setSize(770, 490);
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
