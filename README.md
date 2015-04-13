@@ -28,3 +28,13 @@ This repository has made the following changes to the original demo source code.
 This repository contains a `demos` folder with an executable JAR file for each demo (released previously as a Java web applet). To run a demo simply double click on the corresponding JAR file or invoke it directly from the command line (example: `java -jar SmasherDemo.jar`).
 
 ![Smasher Demo Screenshot](screenshot.png)
+
+## Demo Descriptions
+The following descriptions of each demo are taken from [http://nsfsecurity.pr.erau.edu/bom/](http://nsfsecurity.pr.erau.edu/bom/).  Instructors should read the [Instructors' Guide for Demonstrating Buffer Overflows](http://nsfsecurity.pr.erau.edu/bom_docs/Demos/script.html) for additional details.
+
+1. **Jumps**: Shows how stacks are used to keep track of subroutine calls.
+2. **Stacks**: An introduction to the way languages like C use stack frames to store local variables, pass variables from function to function by value and by reference, and also return control to the calling subroutine when the called subroutine exits. 
+3. **Spock**: Demonstrates what is commonly called a "variable attack" buffer overflow, where the target is data. 
+4. **Smasher**: Demonstrates a "stack attack," more commonly referred to as "stack smashing." 
+5. **StackGuard**: This demo shows how the StackGuard compiler can help prevent "stack attacks." 
+
