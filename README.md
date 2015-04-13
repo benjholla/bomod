@@ -23,3 +23,6 @@ This repository has made the following changes to the original demo source code.
 5. Formatted source code
 6. Fixed all warnings
 7. Minor display tweaks in demo graphics
+
+## Running Demos
+This repository contains a `demos` folder with an executable JAR file for each demo (released previously as a Java web applet). To run a demo simply double click on the corresponding JAR file or invoke it directly from the command line (example: `java -jar SmasherDemo.jar`).
