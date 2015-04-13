@@ -22,3 +22,4 @@ This repository has made the following changes to the original demo source code.
 4. Replaced deprecated methods with modern equivalents
 5. Formatted source code
 6. Fixed all warnings
+7. Minor display tweaks in demo graphics
