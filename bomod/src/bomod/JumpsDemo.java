@@ -5,18 +5,18 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import bomod.spock.Spock;
+import bomod.jumps.Jumps;
 
 /**
- * Java application wrapper around Spock Applet demo
+ * Java application wrapper around Jumps Applet demo
  * 
  * @author Benjamin Holland <bholland@iastate.edu>
  */
-public class SpockDemo extends JFrame {
+public class JumpsDemo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
 
-	public SpockDemo() {
+	public JumpsDemo() {
 		init();
 	}
 
@@ -30,8 +30,8 @@ public class SpockDemo extends JFrame {
 	public static void main(String[] args) {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
-				SpockDemo app = new SpockDemo();
-				Spock applet = new Spock();
+				JumpsDemo app = new JumpsDemo();
+				Jumps applet = new Jumps();
 				applet.init();
 				app.add(applet, BorderLayout.CENTER);
 				app.setVisible(true);

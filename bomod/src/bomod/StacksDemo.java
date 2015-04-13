@@ -7,6 +7,11 @@ import javax.swing.JFrame;
 
 import bomod.stacks.Stacks;
 
+/**
+ * Java application wrapper around Stacks Applet demo
+ * 
+ * @author Benjamin Holland <bholland@iastate.edu>
+ */
 public class StacksDemo extends JFrame {
 
 	private static final long serialVersionUID = 1L;

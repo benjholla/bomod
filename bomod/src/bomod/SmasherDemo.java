@@ -7,6 +7,11 @@ import javax.swing.JFrame;
 
 import bomod.smasher.Smasher;
 
+/**
+ * Java application wrapper around Smasher Applet demo
+ * 
+ * @author Benjamin Holland <bholland@iastate.edu>
+ */
 public class SmasherDemo extends JFrame {
 
 	private static final long serialVersionUID = 1L;

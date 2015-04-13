@@ -166,7 +166,7 @@ public class Jumps extends Applet implements ActionListener, KeyListener {
 		bStepForward.addActionListener(this);
 		bReset.addActionListener(this);
 
-		typingArea = new TextField(30);
+		typingArea = new TextField(15);
 		typingArea.addKeyListener(this);
 		typingArea.setEnabled(false);
 

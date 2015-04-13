@@ -7,6 +7,11 @@ import javax.swing.JFrame;
 
 import bomod.stack_guard.StackGuard;
 
+/**
+ * Java application wrapper around Stack Guard Applet demo
+ * 
+ * @author Benjamin Holland <bholland@iastate.edu>
+ */
 public class StackGuardDemo extends JFrame {
 
 	private static final long serialVersionUID = 1L;
