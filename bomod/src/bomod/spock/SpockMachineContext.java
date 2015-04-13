@@ -50,7 +50,7 @@ public class SpockMachineContext extends MachineContext {
 		Code[1] = new LineOfCode("#include <string.h>", Color.white);
 		Code[2] = new LineOfCode("", Color.white);
 		Code[3] = new LineOfCode("int PasswordOkay()", CodeColor1);
-		Code[4] = new LineOfCode("  {", CodeColor1);
+		Code[4] = new LineOfCode("{", CodeColor1);
 		Code[5] = new LineOfCode("  char GoodPassword = 'F';", CodeColor1);
 		Code[6] = new LineOfCode("  char Password[8];", CodeColor1);
 		Code[7] = new LineOfCode("", CodeColor1);
@@ -58,16 +58,16 @@ public class SpockMachineContext extends MachineContext {
 		Code[9] = new LineOfCode("  if (!strcmp(Password, \"SPOCKSUX\"))", CodeColor1);
 		Code[10] = new LineOfCode("    GoodPassword = 'T';", CodeColor1);
 		Code[11] = new LineOfCode("  return (GoodPassword == 'T');", CodeColor1);
-		Code[12] = new LineOfCode("  }", CodeColor1);
+		Code[12] = new LineOfCode("}", CodeColor1);
 		Code[13] = new LineOfCode("", CodeColor1);
 		Code[14] = new LineOfCode("void main()", CodeColor2);
-		Code[15] = new LineOfCode("  {", CodeColor2);
+		Code[15] = new LineOfCode("{", CodeColor2);
 		Code[16] = new LineOfCode("  puts(\"Enter Password:\");", CodeColor2);
 		Code[17] = new LineOfCode("  if (PasswordOkay())", CodeColor2);
 		Code[18] = new LineOfCode("    puts(\"Hello, Dr. Bones.\");", CodeColor2);
 		Code[19] = new LineOfCode("  else", CodeColor2);
 		Code[20] = new LineOfCode("    puts(\"Access denied.\");", CodeColor2);
-		Code[21] = new LineOfCode("  }", CodeColor2);
+		Code[21] = new LineOfCode("}", CodeColor2);
 		NumCodeLines = 22;
 
 		int Loop;

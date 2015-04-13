@@ -22,6 +22,8 @@ import java.awt.event.KeyListener;
  * @author Benjamin Holland <bholland@iastate.edu>
  */
 public class Smasher extends Applet implements ActionListener, KeyListener {
+	public Smasher() {
+	}
 
 	private static final long serialVersionUID = 1L;
 
@@ -166,7 +168,7 @@ public class Smasher extends Applet implements ActionListener, KeyListener {
 		bStepForward.addActionListener(this);
 		bReset.addActionListener(this);
 
-		typingArea = new TextField(30);
+		typingArea = new TextField(15);
 		typingArea.addKeyListener(this);
 		typingArea.setEnabled(false);
 
