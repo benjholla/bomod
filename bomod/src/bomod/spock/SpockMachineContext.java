@@ -1,22 +1,28 @@
-// SpockMachineContext.java
-// Jedidiah Crandall, crandaj@erau.edu
-// Machine context specific to the Spock applet
+package bomod.spock;
 
-import java.awt.*;
-import java.util.Random;
+import java.awt.Color;
 
-public class SpockMachineContext extends MachineContext
-{
-	
+import bomod.MachineContext;
+
+/**
+ * Machine context specific to the Spock applet
+ * 
+ * Original source by Jedidiah Crandall Java 1.7 compatibility modifications and
+ * style changes by Ben Holland
+ * 
+ * @author Jedidiah Crandall <crandaj@erau.edu>
+ * @author Benjamin Holland <bholland@iastate.edu>
+ */
+public class SpockMachineContext extends MachineContext {
+
 	public int PCStart;
 	public int PCStop;
 	public boolean bNeedInput;
 	public int InputStart;
 	public String sSaveIt;
 	public String sExplanation;
-	
-	SpockMachineContext()
-	{
+
+	SpockMachineContext() {
 		Output[0] = new String();
 		Output[1] = new String();
 		Output[2] = new String();
@@ -24,9 +30,8 @@ public class SpockMachineContext extends MachineContext
 		Output[4] = new String();
 		Reset();
 	}
-	
-	public boolean Reset()
-	{
+
+	public boolean Reset() {
 		Step = 0;
 		StackSize = 0;
 		HighlightedLine = -1;
@@ -34,7 +39,7 @@ public class SpockMachineContext extends MachineContext
 		PCStop = 0;
 		bNeedInput = false;
 		InputStart = 0xC0;
-		sExplanation = "Click 'Play' or 'Step Forward' to begin."; 
+		sExplanation = "Click 'Play' or 'Step Forward' to begin.";
 		sSaveIt = "";
 		Output[0] = "";
 		Output[1] = "";
@@ -64,59 +69,51 @@ public class SpockMachineContext extends MachineContext
 		Code[20] = new LineOfCode("    puts(\"Access denied.\");", CodeColor2);
 		Code[21] = new LineOfCode("  }", CodeColor2);
 		NumCodeLines = 22;
-		
+
 		int Loop;
-		for (Loop = 0; Loop < 256; Loop++)
-		{
-			if (Loop <= 0x3C)
-			{
+		for (Loop = 0; Loop < 256; Loop++) {
+			if (Loop <= 0x3C) {
 				Memory[Loop] = new MemorySpot("", StackContentsColor, CodeColor2);
-			}
-			else if (Loop <= 0x6A)
-			{
+			} else if (Loop <= 0x6A) {
 				Memory[Loop] = new MemorySpot("", StackContentsColor, CodeColor1);
-			}
-			else
-			{
+			} else {
 				Memory[Loop] = new MemorySpot("", Color.white, Color.darkGray);
 			}
 		}
 		return true;
 	}
-	
+
 	String Junk = new String("!:<{}\"'.^$!$#!*@^(*~][],.<}][*!&@%$*(#(*%%$!^$##!$@(#%#^^%$%%(&*',/?");
-	
-	public boolean StepForward()
-	{
+
+	public boolean StepForward() {
 		Step++;
 		bNeedInput = false;
 		InputStart = 0;
-		switch(Step)
-		{
+		switch (Step) {
 		case 1:
 			PCStart = 0x00;
 			PCStop = 0x00;
 			HighlightedLine = 15;
 			sExplanation = "This is a demo of how security measures can be circumvented using a buffer overflow";
-		break;
+			break;
 		case 2:
 			PCStart = 0x00;
 			PCStop = 0x08;
 			HighlightedLine = 16;
 			sExplanation = "This just prints something to the screen";
-		break;
+			break;
 		case 3:
 			PCStart = 0x08;
 			PCStop = 0x17;
 			HighlightedLine = 17;
 			sExplanation = "main() will now call PasswordOkay()";
-		break;
+			break;
 		case 4:
 			PCStart = 0x3D;
 			PCStop = 0x3D;
 			HighlightedLine = 4;
 			sExplanation = "PasswordOkay() makes some stack space for it's local variables and also a return pointer back into main()";
-		break;
+			break;
 		case 5:
 			PCStart = 0x3D;
 			PCStop = 0x48;
@@ -124,29 +121,26 @@ public class SpockMachineContext extends MachineContext
 			bNeedInput = true;
 			InputStart = 0xC0;
 			sExplanation = "Now is where you can use the text box above to give input to the program and click 'Play' or 'Step Forward' to resume";
-		break;
+			break;
 		case 6:
 			PCStart = 0x48;
 			PCStop = 0x51;
 			HighlightedLine = 9;
 			sExplanation = "The program now checks to see if you entered \"SPOCKSUX\"";
-		break;
+			break;
 		case 7:
 			String sPass;
 			if (sSaveIt.length() >= 8)
 				sPass = sSaveIt.substring(0, 8);
 			else
 				sPass = "";
-				
-			if (sPass.compareTo("SPOCKSUX") == 0)
-			{
+
+			if (sPass.compareTo("SPOCKSUX") == 0) {
 				PCStart = 0x51;
 				PCStop = 0x5E;
 				HighlightedLine = 10;
 				sExplanation = "You entered the right password, but can you get logged in another way?";
-			}
-			else
-			{
+			} else {
 				Memory[0x51].Contents = " ";
 				Step = 8;
 				PCStart = 0x5E;
@@ -154,57 +148,57 @@ public class SpockMachineContext extends MachineContext
 				HighlightedLine = 11;
 				sExplanation = "You didn't enter the right password, but do you need to?";
 			}
-		break;
+			break;
 		case 8:
 			PCStart = 0x5E;
 			PCStop = 0x6A;
 			HighlightedLine = 11;
 			Memory[0xC8].Contents = "T";
 			sExplanation = "Try, instead, overflowing the buffer to get logged in as Dr. Bones";
-		break;
+			break;
 		case 9:
 			PCStart = 0x6A;
 			PCStop = 0x6A;
 			HighlightedLine = 12;
 			sExplanation = "PasswordOkay() is done, so it will deallocate its stack space and return contorl to main()";
-		break;
+			break;
 		case 20:
 			PCStart = 0x17;
 			PCStop = 0x28;
 			HighlightedLine = 18;
 			sExplanation = "You're now logged in as Dr. Bones";
-		break;
+			break;
 		case 30:
 			Memory[0x17].Contents = "";
 			PCStart = 0x29;
 			PCStop = 0x3C;
 			HighlightedLine = 20;
 			sExplanation = "You didn't get logged in";
-		break;
+			break;
 		case 21:
 		case 31:
 			Memory[0x28].Contents = " ";
 			PCStart = 0x3C;
 			PCStop = 0x3C;
 			HighlightedLine = 21;
-		return false;
+			return false;
 		case 41:
-			sExplanation = "You cobbled up the machine because the return pointer to main() was corrupted";			
-		return false;
+			sExplanation = "You cobbled up the machine because the return pointer to main() was corrupted";
+			return false;
 		}
 		return true;
 	}
-	
-	public void Execute()
-	{
-		switch(Step)
-		{
+
+	public void Execute() {
+		switch (Step) {
 		case 1:
-		break;
-		case 2: Output[0] = "Enter Password:"; break;
+			break;
+		case 2:
+			Output[0] = "Enter Password:";
+			break;
 		case 3:
 			Memory[0x17].Contents = "X";
-		break;
+			break;
 		case 4:
 			TheStack[0] = new MemorySpot(" ", StackContentsColor, CodeColor1);
 			TheStack[1] = new MemorySpot(" ", StackContentsColor, CodeColor1);
@@ -227,60 +221,53 @@ public class SpockMachineContext extends MachineContext
 			Memory[0xC7] = TheStack[7];
 			Memory[0xC8] = TheStack[8];
 			Memory[0xC9] = TheStack[9];
-		break;
+			break;
 		case 5:
-		break;
+			break;
 		case 6:
-		break;
+			break;
 		case 7:
 			Memory[0xC8].Contents = "T";
-		break;
+			break;
 		case 8:
-		break;
+			break;
 		case 9:
 			int Loop;
-			if (Memory[0xC8].Contents.compareTo("T") == 0)
-			{
-				Step = 19;	
-			}
-			else
-			{
+			if (Memory[0xC8].Contents.compareTo("T") == 0) {
+				Step = 19;
+			} else {
 				Step = 29;
 			}
-			if (Memory[0xC9].Contents.compareTo("$") != 0)
-			{
+			if (Memory[0xC9].Contents.compareTo("$") != 0) {
 				Step = 39;
 			}
-			for (Loop = 0xC0; Loop < 256; Loop++)
-			{
+			for (Loop = 0xC0; Loop < 256; Loop++) {
 				Memory[Loop].Contents = "";
 				Memory[Loop].FGColor = Color.white;
 				Memory[Loop].BGColor = Color.darkGray;
 			}
 			Memory[0x6A].Contents = " ";
 			Memory[0x17].Contents = "*";
-		break;
+			break;
 		case 20:
-			Output[2] = "Hello, Dr. Bones.";	
+			Output[2] = "Hello, Dr. Bones.";
 			Memory[0x17].Contents = " ";
-		break;
+			break;
 		case 30:
 			Output[2] = "Access denied.";
 			Memory[0x17].Contents = " ";
-		break;
+			break;
 		case 40:
-			for (Loop = 0x00; Loop <= 0xFF; Loop++)
-			{
+			for (Loop = 0x00; Loop <= 0xFF; Loop++) {
 				Memory[Loop].Contents = Junk.substring(Loop % Junk.length(), Loop % Junk.length() + 1);
 			}
 			Output[2] = "Segmentation fault.";
-		break; 
+			break;
 		}
 	}
-			
-	public boolean StepBack()
-	{
+
+	public boolean StepBack() {
 		return true;
 	}
-	
+
 }

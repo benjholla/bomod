@@ -1,12 +1,20 @@
-// SmasherMachineContext.java
-// Jedidiah Crandall, crandaj@erau.edu
-// Machine context specific to the Smasher applet
+package bomod.smasher;
 
-import java.awt.*;
+import java.awt.Color;
 
-public class SmasherMachineContext extends MachineContext
-{
-	
+import bomod.MachineContext;
+
+/**
+ * Machine context specific to the Smasher applet
+ * 
+ * Original source by Jedidiah Crandall Java 1.7 compatibility modifications and
+ * style changes by Ben Holland
+ * 
+ * @author Jedidiah Crandall <crandaj@erau.edu>
+ * @author Benjamin Holland <bholland@iastate.edu>
+ */
+public class SmasherMachineContext extends MachineContext {
+
 	public int PCStart;
 	public int PCStop;
 	public boolean bNeedInput;
@@ -14,8 +22,7 @@ public class SmasherMachineContext extends MachineContext
 	public String sSaveIt;
 	public String sExplanation;
 
-	SmasherMachineContext()
-	{
+	SmasherMachineContext() {
 		Output[0] = new String();
 		Output[1] = new String();
 		Output[2] = new String();
@@ -23,9 +30,8 @@ public class SmasherMachineContext extends MachineContext
 		Output[4] = new String();
 		Reset();
 	}
-	
-	public boolean Reset()
-	{
+
+	public boolean Reset() {
 		Step = 0;
 		StackSize = 0;
 		HighlightedLine = -1;
@@ -33,14 +39,14 @@ public class SmasherMachineContext extends MachineContext
 		PCStop = 0;
 		bNeedInput = false;
 		InputStart = 0xC0;
-		sExplanation = "Click 'Play' or 'Step Forward' to begin."; 
+		sExplanation = "Click 'Play' or 'Step Forward' to begin.";
 		sSaveIt = "";
 		Output[0] = "";
 		Output[1] = "";
 		Output[2] = "";
 		Output[3] = "";
 		Output[4] = "";
-		
+
 		Code[0] = new LineOfCode("#include <stdio.h>", Color.white);
 		Code[1] = new LineOfCode("", Color.white);
 		Code[2] = new LineOfCode("typedef char t_STRING[10]", Color.white);
@@ -65,63 +71,53 @@ public class SmasherMachineContext extends MachineContext
 		Code[21] = new LineOfCode("  GetString(sMyString);", CodeColor3);
 		Code[22] = new LineOfCode("  }", CodeColor3);
 		NumCodeLines = 23;
-		
+
 		int Loop;
-		for (Loop = 0; Loop < 256; Loop++)
-		{
-			if (Loop <= 0x23)
-			{
+		for (Loop = 0; Loop < 256; Loop++) {
+			if (Loop <= 0x23) {
 				Memory[Loop] = new MemorySpot("", StackContentsColor, CodeColor3);
-			}
-			else if (Loop <= 0x43)
-			{
+			} else if (Loop <= 0x43) {
 				Memory[Loop] = new MemorySpot("", StackContentsColor, CodeColor1);
-			}
-			else if (Loop <= 0x6A)
-			{
+			} else if (Loop <= 0x6A) {
 				Memory[Loop] = new MemorySpot("", StackContentsColor, CodeColor2);
-			}
-			else
-			{
+			} else {
 				Memory[Loop] = new MemorySpot("", Color.white, Color.darkGray);
 			}
 		}
 		return true;
 	}
-	
+
 	String Junk = new String("!:<{}\"'.^$!$#!*@^(*~][],.<}][*!&@%$*(#(*%%$!^$##!$@(#%#^^%$%%(&*',/?");
-	
-	public boolean StepForward()
-	{
+
+	public boolean StepForward() {
 		Step++;
 		bNeedInput = false;
 		InputStart = 0;
-		switch(Step)
-		{
+		switch (Step) {
 		case 1:
 			PCStart = 0x00;
 			PCStop = 0x00;
 			HighlightedLine = 17;
 			sExplanation = "This is a demo of how you can \"smash the stack\" by overwriting the return pointer";
-		break;
+			break;
 		case 2:
 			PCStart = 0x00;
 			PCStop = 0x12;
 			HighlightedLine = 20;
 			sExplanation = "\"Smashing the stack\" is how breakins happen and viruses spread";
-		break;
+			break;
 		case 3:
 			PCStart = 0x12;
 			PCStop = 0x23;
 			HighlightedLine = 21;
 			sExplanation = "Now main() will make a call to GetString()";
-		break;
+			break;
 		case 4:
 			PCStart = 0x24;
 			PCStop = 0x24;
 			HighlightedLine = 5;
 			sExplanation = "GetString has some stack space and also a return pointer to main (the '$')";
-		break;
+			break;
 		case 5:
 			PCStart = 0x24;
 			PCStop = 0x2E;
@@ -129,50 +125,50 @@ public class SmasherMachineContext extends MachineContext
 			bNeedInput = true;
 			InputStart = 0xCA;
 			sExplanation = "Now is where you can use the text box above to give input to the program and click 'Play' or 'Step Forward' to resume";
-		break;
+			break;
 		case 6:
 			PCStart = 0x2E;
 			PCStop = 0x39;
 			HighlightedLine = 7;
 			sExplanation = "You should note that the problem takes root in the gets() library function";
-		break;
+			break;
 		case 7:
 			PCStart = 0x39;
 			PCStop = 0x43;
 			HighlightedLine = 8;
 			sExplanation = "There are other library functions that should be avoided, such as strcpy(), strcat(), and sprintf()";
-		break;
+			break;
 		case 8:
 			PCStart = 0x43;
 			PCStop = 0x43;
 			HighlightedLine = 9;
 			sExplanation = "Things get interesting when GetString() reads the return address and uses it to return control, supposedly to main()";
-		break;
+			break;
 		case 9:
 			PCStart = 0x23;
 			PCStop = 0x23;
 			HighlightedLine = 22;
 			sExplanation = "Control was returned to main(), but can you think of a way to call the forbidden red function?  Hint: What is the ASCII character for 0x44?";
-		return false;
+			return false;
 		case 20:
 			Memory[0x43].Contents = "";
 			PCStart = 0x44;
 			PCStop = 0x44;
 			HighlightedLine = 12;
 			sExplanation = "The return address pointed to the forbidden red function so you ended up here";
-		break;
+			break;
 		case 21:
 			PCStart = 0x44;
 			PCStop = 0x6A;
 			HighlightedLine = 13;
 			sExplanation = "The forbidden red function could be anything, such as a root shell or a virus placed by an attacker";
-		break;
+			break;
 		case 22:
 			PCStart = 0x6A;
 			PCStop = 0x6A;
 			HighlightedLine = 14;
 			sExplanation = "An attacker could get their code into memory, on the stack or the heap, by using you're program's input routines";
-		return false;
+			return false;
 		case 40:
 			PCStart = 0x43;
 			PCStop = 0x43;
@@ -180,19 +176,16 @@ public class SmasherMachineContext extends MachineContext
 			sExplanation = "The return address pointed to something that didn't make sense so you caused a segmentation fault";
 			Output[4] = "Segmentation fault.";
 			int Loop;
-			for (Loop = 0x00; Loop <= 0xFF; Loop++)
-			{
+			for (Loop = 0x00; Loop <= 0xFF; Loop++) {
 				Memory[Loop].Contents = Junk.substring(Loop % Junk.length(), Loop % Junk.length() + 1);
 			}
-		return false;
+			return false;
 		}
 		return true;
 	}
-	
-	public void Execute()
-	{
-		switch(Step)
-		{
+
+	public void Execute() {
+		switch (Step) {
 		case 1:
 			TheStack[0] = new MemorySpot("H", StackContentsColor, CodeColor3);
 			TheStack[1] = new MemorySpot("e", StackContentsColor, CodeColor3);
@@ -215,11 +208,12 @@ public class SmasherMachineContext extends MachineContext
 			Memory[0xC8] = TheStack[8];
 			Memory[0xC9] = TheStack[9];
 			StackSize = 10;
-		break;
-		case 2: Output[0] = "Enter something:";
-		break;
+			break;
+		case 2:
+			Output[0] = "Enter something:";
+			break;
 		case 3:
-		break;
+			break;
 		case 4:
 			Memory[0x23].Contents = "X";
 			TheStack[10] = new MemorySpot("H", StackContentsColor, CodeColor1);
@@ -245,50 +239,45 @@ public class SmasherMachineContext extends MachineContext
 			Memory[0xD2] = TheStack[18];
 			Memory[0xD3] = TheStack[19];
 			Memory[0xD4] = TheStack[20];
-		break;
+			break;
 		case 5:
-		break;
+			break;
 		case 6:
 			Output[2] = "You entered:";
-		break;
+			break;
 		case 7:
 			Output[3] = sSaveIt;
-		break;
+			break;
 		case 8:
-			if (Memory[0xD4].Contents.compareTo("D") == 0)
-			{
+			if (Memory[0xD4].Contents.compareTo("D") == 0) {
 				Step = 19;
-			}
-			else if (Memory[0xD4].Contents.compareTo("$") != 0)
-			{
+			} else if (Memory[0xD4].Contents.compareTo("$") != 0) {
 				Step = 39;
 			}
-		break;
+			break;
 		case 9:
 			int Loop;
-			for (Loop = 0xCA; Loop < 0xFF; Loop++)
-			{
+			for (Loop = 0xCA; Loop < 0xFF; Loop++) {
 				Memory[Loop].Contents = "";
 				Memory[Loop].FGColor = Color.white;
 				Memory[Loop].BGColor = Color.darkGray;
 			}
 			Memory[0x43].Contents = "";
-		break;
+			break;
 		case 20:
 			Memory[0x23].Contents = "";
 			Memory[0x6A].Contents = "";
-		break;
+			break;
 		case 21:
 			Output[4] = "Oh, bother.";
-		break;
+			break;
 		case 22:
-		break;
+			break;
 		}
 	}
-			
-	public boolean StepBack()
-	{
+
+	public boolean StepBack() {
 		return true;
 	}
-	
+
 }
