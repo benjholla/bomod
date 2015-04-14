@@ -1,4 +1,4 @@
-package bomod.stacks;
+package bomod.demos.stacks;
 
 import java.awt.Color;
 

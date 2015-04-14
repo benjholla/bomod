@@ -1,4 +1,4 @@
-package bomod.smasher;
+package bomod.demos.smasher;
 
 import java.awt.Button;
 import java.awt.Checkbox;
@@ -65,18 +65,23 @@ public class Smasher extends DemoApplet {
 
 	void makeContentPane() {
 		cbStep = new Checkbox("Program Counter Delay");
+		cbStep.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
 		cbStep.setState(true);
 
 		bPlay = new Button("Play");
+		bPlay.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
 		bPlay.setActionCommand(PLAY);
 
 		bStop = new Button("Stop");
+		bStop.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
 		bStop.setActionCommand(STOP);
 
 		bStepForward = new Button("Step Forward");
+		bStepForward.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
 		bStepForward.setActionCommand(STEPFORWARD);
 
 		bReset = new Button("Reset");
+		bReset.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
 		bReset.setActionCommand(RESET);
 
 		bPlay.addActionListener(this);
@@ -85,15 +90,19 @@ public class Smasher extends DemoApplet {
 		bReset.addActionListener(this);
 
 		typingArea = new TextField(15);
+		typingArea.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
 		typingArea.addKeyListener(this);
 		typingArea.setEnabled(false);
+		
+		Label label = new Label("Input:");
+		label.setFont(new Font(Font.MONOSPACED, Font.PLAIN, 12));
 
 		add(cbStep);
 		add(bPlay);
 		add(bStop);
 		add(bStepForward);
 		add(bReset);
-		add(new Label("Input:"));
+		add(label);
 		add(typingArea);
 	}
 

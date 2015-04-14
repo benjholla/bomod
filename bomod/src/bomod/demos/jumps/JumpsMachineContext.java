@@ -1,4 +1,4 @@
-package bomod.jumps;
+package bomod.demos.jumps;
 
 import java.awt.Color;
 

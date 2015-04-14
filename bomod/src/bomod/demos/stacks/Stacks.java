@@ -1,4 +1,4 @@
-package bomod.jumps;
+package bomod.demos.stacks;
 
 import java.applet.Applet;
 import java.awt.Button;
@@ -13,7 +13,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 
 /**
- * Main source file for the Jumps applet
+ * Main source file for the Stacks applet
  * 
  * Original source by Jedidiah Crandall Java 1.7 compatibility modifications and
  * style changes by Ben Holland
@@ -21,7 +21,7 @@ import java.awt.event.KeyListener;
  * @author Jedidiah Crandall <crandaj@erau.edu>
  * @author Benjamin Holland <bholland@iastate.edu>
  */
-public class Jumps extends Applet implements ActionListener, KeyListener {
+public class Stacks extends Applet implements ActionListener, KeyListener {
 
 	private static final long serialVersionUID = 1L;
 
@@ -34,7 +34,7 @@ public class Jumps extends Applet implements ActionListener, KeyListener {
 	protected static final String STEPBACK = "stepback";
 	protected static final String RESET = "reset";
 
-	protected JumpsMachineContext m;
+	protected StacksMachineContext m;
 
 	int PlayDelay;
 	int PCDelay;
@@ -46,7 +46,7 @@ public class Jumps extends Applet implements ActionListener, KeyListener {
 		Integer IPlayDelay;
 		Integer IPCDelay;
 
-		m = new JumpsMachineContext();
+		m = new StacksMachineContext();
 		makeContentPane();
 		bStop.setEnabled(false);
 		bPlay.setEnabled(true);

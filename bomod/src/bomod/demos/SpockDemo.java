@@ -1,11 +1,11 @@
-package bomod;
+package bomod.demos;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import bomod.spock.Spock;
+import bomod.demos.spock.Spock;
 
 /**
  * Java application wrapper around Spock Applet demo

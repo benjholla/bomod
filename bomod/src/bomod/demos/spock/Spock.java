@@ -1,4 +1,4 @@
-package bomod.spock;
+package bomod.demos.spock;
 
 import java.applet.Applet;
 import java.awt.Button;

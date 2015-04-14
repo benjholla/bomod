@@ -1,11 +1,11 @@
-package bomod;
+package bomod.demos;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import bomod.stack_guard.StackGuard;
+import bomod.demos.stack_guard.StackGuard;
 
 /**
  * Java application wrapper around Stack Guard Applet demo

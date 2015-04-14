@@ -1,11 +1,11 @@
-package bomod;
+package bomod.demos;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import bomod.stacks.Stacks;
+import bomod.demos.stacks.Stacks;
 
 /**
  * Java application wrapper around Stacks Applet demo

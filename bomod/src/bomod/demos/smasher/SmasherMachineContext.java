@@ -1,4 +1,4 @@
-package bomod.smasher;
+package bomod.demos.smasher;
 
 import java.awt.Color;
 

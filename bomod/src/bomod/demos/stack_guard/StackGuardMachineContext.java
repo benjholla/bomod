@@ -1,4 +1,4 @@
-package bomod.stack_guard;
+package bomod.demos.stack_guard;
 
 import java.awt.Color;
 

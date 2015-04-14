@@ -1,11 +1,11 @@
-package bomod;
+package bomod.demos;
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import bomod.jumps.Jumps;
+import bomod.demos.jumps.Jumps;
 
 /**
  * Java application wrapper around Jumps Applet demo

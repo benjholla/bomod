@@ -1,4 +1,4 @@
-package bomod;
+package bomod.demos;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -6,7 +6,9 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
-import bomod.smasher.Smasher;
+import bomod.DemoApplet;
+import bomod.OSUtils;
+import bomod.demos.smasher.Smasher;
 
 /**
  * Java application wrapper around Smasher Applet demo
@@ -38,7 +40,13 @@ public class SmasherDemo extends JFrame {
 		// add applet to the application window
 		add(applet, BorderLayout.CENTER);
 		setTitle("BOMod Smasher Demo");
-		setSize(Smasher.MAXWIDTH + (Smasher.XADD * 4), Smasher.MAXHEIGHT + (Smasher.YADD * 2));
+		
+		if(OSUtils.isWindows()){
+			setSize(Smasher.MAXWIDTH + (Smasher.XADD * 4), Smasher.MAXHEIGHT + (Smasher.YADD * 2));
+		} else {
+			setSize(Smasher.MAXWIDTH + (Smasher.XADD * 2), Smasher.MAXHEIGHT + 70);
+		}
+
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
