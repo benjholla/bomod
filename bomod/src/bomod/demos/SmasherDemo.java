@@ -41,7 +41,7 @@ public class SmasherDemo extends JFrame {
 		setTitle("BOMod Smasher Demo");
 		
 		if(OSUtils.isWindows()){
-			setSize(Smasher.MAXWIDTH + (Smasher.XADD * 4), Smasher.MAXHEIGHT + (Smasher.YADD * 2));
+			setSize(Smasher.MAXWIDTH + 36, Smasher.MAXHEIGHT + 86);
 		} else {
 			setSize(Smasher.MAXWIDTH + (Smasher.XADD * 2), Smasher.MAXHEIGHT + 70);
 		}
