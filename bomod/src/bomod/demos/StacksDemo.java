@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import bomod.OSUtils;
 import bomod.demos.stacks.Stacks;
 
 /**
@@ -21,8 +22,19 @@ public class StacksDemo extends JFrame {
 	}
 
 	private void init() {
+		Stacks applet = new Stacks();
+		// initialize the applet with default color scheme
+		applet.init();
+		// add applet to the application window
+		add(applet, BorderLayout.CENTER);
 		setTitle("BOMod Stacks Demo");
-		setSize(770, 490);
+		
+		if(OSUtils.isWindows()){
+			setSize(Stacks.MAXWIDTH + (Stacks.XADD * 4), Stacks.MAXHEIGHT + (Stacks.YADD * 2));
+		} else {
+			setSize(Stacks.MAXWIDTH + (Stacks.XADD * 2), Stacks.MAXHEIGHT + 70);
+		}
+
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -31,9 +43,6 @@ public class StacksDemo extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				StacksDemo app = new StacksDemo();
-				Stacks applet = new Stacks();
-				applet.init();
-				app.add(applet, BorderLayout.CENTER);
 				app.setVisible(true);
 			}
 		});

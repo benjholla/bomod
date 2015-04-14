@@ -123,7 +123,7 @@ public class JumpsMachineContext extends MachineContext {
 			PCStop = 0x42;
 			Memory[0x38].Contents = "X";
 			HighlightedLine = 6;
-			sExplanation = "Look at the stack now that we're a couple of subroutines deep";
+			sExplanation = "Look at the stack now that we are a couple of subroutines deep";
 			break;
 		case 6:
 			PCStart = 0x42;

@@ -49,7 +49,7 @@ public class SmasherMachineContext extends MachineContext {
 
 		Code[0] = new LineOfCode("#include <stdio.h>", Color.white);
 		Code[1] = new LineOfCode("", Color.white);
-		Code[2] = new LineOfCode("typedef char t_STRING[10]", Color.white);
+		Code[2] = new LineOfCode("typedef char t_STRING[10];", Color.white);
 		Code[3] = new LineOfCode("", Color.white);
 		Code[4] = new LineOfCode("void get_string(t_STRING str)", CodeColor1);
 		Code[5] = new LineOfCode("{", CodeColor1);

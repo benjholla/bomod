@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import bomod.OSUtils;
 import bomod.demos.jumps.Jumps;
 
 /**
@@ -21,8 +22,19 @@ public class JumpsDemo extends JFrame {
 	}
 
 	private void init() {
+		Jumps applet = new Jumps();
+		// initialize the applet with default color scheme
+		applet.init();
+		// add applet to the application window
+		add(applet, BorderLayout.CENTER);
 		setTitle("BOMod Jumps Demo");
-		setSize(770, 490);
+		
+		if(OSUtils.isWindows()){
+			setSize(Jumps.MAXWIDTH + (Jumps.XADD * 4), Jumps.MAXHEIGHT + (Jumps.YADD * 2));
+		} else {
+			setSize(Jumps.MAXWIDTH + (Jumps.XADD * 2), Jumps.MAXHEIGHT + 70);
+		}
+
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -31,9 +43,6 @@ public class JumpsDemo extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				JumpsDemo app = new JumpsDemo();
-				Jumps applet = new Jumps();
-				applet.init();
-				app.add(applet, BorderLayout.CENTER);
 				app.setVisible(true);
 			}
 		});

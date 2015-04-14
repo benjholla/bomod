@@ -46,28 +46,28 @@ public class StacksMachineContext extends MachineContext {
 		Output[2] = "";
 		Output[3] = "";
 		Output[4] = "";
-		Code[0] = new LineOfCode("void Funky1(char *pMyParameter)", CodeColor1);
+		Code[0] = new LineOfCode("void foo_1(char *p_my_parameter)", CodeColor1);
 		Code[1] = new LineOfCode("{", CodeColor1);
-		Code[2] = new LineOfCode("  *pMyParameter = 'F';", CodeColor1);
+		Code[2] = new LineOfCode("  *p_my_parameter = 'F';", CodeColor1);
 		Code[3] = new LineOfCode("}", CodeColor1);
 		Code[4] = new LineOfCode("", CodeColor1);
-		Code[5] = new LineOfCode("void Funky2(char MyParameter)", CodeColor2);
+		Code[5] = new LineOfCode("void foo_2(char my_parameter)", CodeColor2);
 		Code[6] = new LineOfCode("{", CodeColor2);
-		Code[7] = new LineOfCode("  char MyLocalVariable = 'E';", CodeColor2);
-		Code[8] = new LineOfCode("  MyParameter = 'V';", CodeColor2);
-		Code[9] = new LineOfCode("  Funky1(&MyLocalVariable);", CodeColor2);
+		Code[7] = new LineOfCode("  char my_local_variable = 'E';", CodeColor2);
+		Code[8] = new LineOfCode("  my_parameter = 'V';", CodeColor2);
+		Code[9] = new LineOfCode("  foo_1(&my_local_variable);", CodeColor2);
 		Code[10] = new LineOfCode("}", CodeColor2);
 		Code[11] = new LineOfCode("", CodeColor2);
-		Code[12] = new LineOfCode("void Funky3(char MyParameter)", CodeColor4);
+		Code[12] = new LineOfCode("void foo_3(char my_parameter)", CodeColor4);
 		Code[13] = new LineOfCode("{", CodeColor4);
-		Code[14] = new LineOfCode("  char MyLocalVariable = 'Q';", CodeColor4);
-		Code[15] = new LineOfCode("  Funky2(MyLocalVariable);", CodeColor4);
-		Code[16] = new LineOfCode("  Funky1(&MyParameter);", CodeColor4);
+		Code[14] = new LineOfCode("  char my_local_variable = 'Q';", CodeColor4);
+		Code[15] = new LineOfCode("  foo_2(my_local_variable);", CodeColor4);
+		Code[16] = new LineOfCode("  foo_1(&my_parameter);", CodeColor4);
 		Code[17] = new LineOfCode("}", CodeColor4);
 		Code[18] = new LineOfCode("", CodeColor4);
 		Code[19] = new LineOfCode("void main()", CodeColor3);
 		Code[20] = new LineOfCode("{", CodeColor3);
-		Code[21] = new LineOfCode("  Funky3('A');", CodeColor3);
+		Code[21] = new LineOfCode("  foo_3('A');", CodeColor3);
 		Code[22] = new LineOfCode("}", CodeColor3);
 		NumCodeLines = 23;
 
@@ -103,20 +103,20 @@ public class StacksMachineContext extends MachineContext {
 			PCStart = 0x00;
 			PCStop = 0x17;
 			HighlightedLine = 21;
-			sExplanation = "Now main is going to call Funky3()";
+			sExplanation = "Now main is going to call foo_3()";
 			break;
 		case 3:
 			PCStart = 0x2C;
 			PCStop = 0x2C;
 			Memory[0x17].Contents = "X";
 			HighlightedLine = 13;
-			sExplanation = "The stack now contains room for Funky3()'s data and a return pointer to main()";
+			sExplanation = "The stack now contains room for foo_3()'s data and a return pointer to main()";
 			break;
 		case 4:
 			PCStart = 0x2C;
 			PCStop = 0x38;
 			HighlightedLine = 15;
-			sExplanation = "Funky3() is going to call Funky2() and pass MyLocalVariable by value";
+			sExplanation = "foo_3() is going to call foo_2() and pass my_local_variable by value";
 			break;
 		case 5:
 			PCStart = 0x42;
@@ -129,13 +129,13 @@ public class StacksMachineContext extends MachineContext {
 			PCStart = 0x42;
 			PCStop = 0x51;
 			HighlightedLine = 8;
-			sExplanation = "Notice that MyParameter for Funky2() gets changed but MyLocalVariable for Funky1() doesn't";
+			sExplanation = "Notice that my_parameter for foo_2() gets changed but my_local_variable for foo_1() doesn't";
 			break;
 		case 7:
 			PCStart = 0x51;
 			PCStop = 0x5D;
 			HighlightedLine = 9;
-			sExplanation = "Now Funky2() calls Funky1() but passes MyLocalVariable by reference";
+			sExplanation = "Now foo_2() calls foo_1() but passes my_local_variable by reference";
 			break;
 		case 8:
 			PCStart = 0x18;
@@ -148,53 +148,53 @@ public class StacksMachineContext extends MachineContext {
 			PCStart = 0x18;
 			PCStop = 0x2B;
 			HighlightedLine = 2;
-			sExplanation = "Notice how MyLocalVariable in Funky2() got changed";
+			sExplanation = "Notice how my_local_variable in foo_2() got changed";
 			break;
 		case 10:
 			PCStart = 0x2B;
 			PCStop = 0x2B;
 			HighlightedLine = 3;
-			sExplanation = "Funky1()'s stack space now will be deallocated and we'll use the return pointer to go back to Funky2()";
+			sExplanation = "foo_1()'s stack space now will be deallocated and we'll use the return pointer to go back to foo_2()";
 			break;
 		case 11:
 			PCStart = 0x5D;
 			PCStop = 0x5D;
 			Memory[0x2B].Contents = "";
 			HighlightedLine = 10;
-			sExplanation = "Funky2() is done as well so it's stack space is destroyed and we return to Funky3()";
+			sExplanation = "foo_2() is done as well so it's stack space is destroyed and we return to foo_3()";
 			break;
 		case 12:
 			PCStart = 0x38;
 			PCStop = 0x41;
 			Memory[0x5D].Contents = "";
 			HighlightedLine = 16;
-			sExplanation = "Now Funky3() calls Funky1() and passes MyParameter by reference";
+			sExplanation = "Now foo_3() calls foo_1() and passes my_parameter by reference";
 			break;
 		case 13:
 			PCStart = 0x18;
 			PCStop = 0x18;
 			Memory[0x41].Contents = "X";
 			HighlightedLine = 1;
-			sExplanation = "Funky1() doesn't know who calls it, it just takes care of business and returns control";
+			sExplanation = "foo_1() doesn't know who calls it, it just takes care of business and returns control";
 			break;
 		case 14:
 			PCStart = 0x18;
 			PCStop = 0x2B;
 			HighlightedLine = 2;
-			sExplanation = "Funky3()'s local variable gets changed now";
+			sExplanation = "foo_3()'s local variable gets changed now";
 			break;
 		case 15:
 			PCStart = 0x2B;
 			PCStop = 0x2B;
 			HighlightedLine = 3;
-			sExplanation = "This time Funky1() returns control to Funky3()";
+			sExplanation = "This time foo_1() returns control to foo_3()";
 			break;
 		case 16:
 			PCStart = 0x41;
 			PCStop = 0x41;
 			Memory[0x2B].Contents = "";
 			HighlightedLine = 17;
-			sExplanation = "Funky3()'s stack space is destroyed and now we go back to main()";
+			sExplanation = "foo_3()'s stack space is destroyed and now we go back to main()";
 			break;
 		case 17:
 			PCStart = 0x17;

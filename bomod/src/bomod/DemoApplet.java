@@ -13,7 +13,6 @@ public abstract class DemoApplet extends Applet implements ActionListener, KeyLi
 	protected HashMap<String,Object> parameters = new HashMap<String,Object>();
 	
 	public static final String PLAY_DELAY_PARAM = "playdelay";
-	public static final String PC_DELAY_PARAM = "pcdelay";
 	public static final String BACKGROUND_COLOR_PARAM = "backgroundcolor";
 	public static final String CODE_COLOR1_PARAM = "codecolor1";
 	public static final String CODE_COLOR2_PARAM = "codecolor2";
@@ -25,7 +24,6 @@ public abstract class DemoApplet extends Applet implements ActionListener, KeyLi
 	public DemoApplet(){
 		// default settings
 		setParameter(PLAY_DELAY_PARAM, new Integer(2750));
-		setParameter(PC_DELAY_PARAM, new Integer(30));
 		setParameter(BACKGROUND_COLOR_PARAM,new Color(0, 0, 128));
 		setParameter(CODE_COLOR1_PARAM, new Color(255, 255, 0));
 		setParameter(CODE_COLOR2_PARAM, new Color(128, 255, 64));
@@ -42,7 +40,6 @@ public abstract class DemoApplet extends Applet implements ActionListener, KeyLi
 	public void init() {
 		try {
 			setParameter(PLAY_DELAY_PARAM, this.getParameter(PLAY_DELAY_PARAM));
-			setParameter(PC_DELAY_PARAM, this.getParameter(PC_DELAY_PARAM));
 			
 			String backgroundColorParam = new String(this.getParameter(BACKGROUND_COLOR_PARAM));
 			setParameter(BACKGROUND_COLOR_PARAM, new Color(Integer.parseInt(backgroundColorParam.substring(0, 2), 16), 

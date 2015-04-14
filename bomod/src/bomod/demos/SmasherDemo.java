@@ -25,9 +25,8 @@ public class SmasherDemo extends JFrame {
 
 	private void init() {
 		Smasher applet = new Smasher();
-		// configure the color scheme
+		// override the default the color scheme
 		applet.setParameter(DemoApplet.PLAY_DELAY_PARAM, new Integer(2750));
-		applet.setParameter(DemoApplet.PC_DELAY_PARAM, new Integer(30));
 		applet.setParameter(DemoApplet.BACKGROUND_COLOR_PARAM,new Color(0, 0, 128));
 		applet.setParameter(DemoApplet.CODE_COLOR1_PARAM, Color.GREEN);
 		applet.setParameter(DemoApplet.CODE_COLOR2_PARAM, Color.RED);

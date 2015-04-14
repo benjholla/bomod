@@ -49,21 +49,21 @@ public class SpockMachineContext extends MachineContext {
 		Code[0] = new LineOfCode("#include <stdio.h>", Color.white);
 		Code[1] = new LineOfCode("#include <string.h>", Color.white);
 		Code[2] = new LineOfCode("", Color.white);
-		Code[3] = new LineOfCode("int PasswordOkay()", CodeColor1);
+		Code[3] = new LineOfCode("int check_password()", CodeColor1);
 		Code[4] = new LineOfCode("{", CodeColor1);
-		Code[5] = new LineOfCode("  char GoodPassword = 'F';", CodeColor1);
-		Code[6] = new LineOfCode("  char Password[8];", CodeColor1);
+		Code[5] = new LineOfCode("  char correct_password = 'F';", CodeColor1);
+		Code[6] = new LineOfCode("  char input[8];", CodeColor1);
 		Code[7] = new LineOfCode("", CodeColor1);
-		Code[8] = new LineOfCode("  gets(Password);", CodeColor1);
-		Code[9] = new LineOfCode("  if (!strcmp(Password, \"SPOCKSUX\"))", CodeColor1);
-		Code[10] = new LineOfCode("    GoodPassword = 'T';", CodeColor1);
-		Code[11] = new LineOfCode("  return (GoodPassword == 'T');", CodeColor1);
+		Code[8] = new LineOfCode("  gets(input);", CodeColor1);
+		Code[9] = new LineOfCode("  if (!strcmp(input, \"SPOCKSUX\"))", CodeColor1);
+		Code[10] = new LineOfCode("    correct_password = 'T';", CodeColor1);
+		Code[11] = new LineOfCode("  return (correct_password == 'T');", CodeColor1);
 		Code[12] = new LineOfCode("}", CodeColor1);
 		Code[13] = new LineOfCode("", CodeColor1);
 		Code[14] = new LineOfCode("void main()", CodeColor2);
 		Code[15] = new LineOfCode("{", CodeColor2);
 		Code[16] = new LineOfCode("  puts(\"Enter Password:\");", CodeColor2);
-		Code[17] = new LineOfCode("  if (PasswordOkay())", CodeColor2);
+		Code[17] = new LineOfCode("  if (check_password())", CodeColor2);
 		Code[18] = new LineOfCode("    puts(\"Hello, Dr. Bones.\");", CodeColor2);
 		Code[19] = new LineOfCode("  else", CodeColor2);
 		Code[20] = new LineOfCode("    puts(\"Access denied.\");", CodeColor2);
@@ -106,13 +106,13 @@ public class SpockMachineContext extends MachineContext {
 			PCStart = 0x08;
 			PCStop = 0x17;
 			HighlightedLine = 17;
-			sExplanation = "main() will now call PasswordOkay()";
+			sExplanation = "main() will now call check_password()";
 			break;
 		case 4:
 			PCStart = 0x3D;
 			PCStop = 0x3D;
 			HighlightedLine = 4;
-			sExplanation = "PasswordOkay() makes some stack space for it's local variables and also a return pointer back into main()";
+			sExplanation = "check_password() makes some stack space for it's local variables and also a return pointer back into main()";
 			break;
 		case 5:
 			PCStart = 0x3D;
@@ -160,7 +160,7 @@ public class SpockMachineContext extends MachineContext {
 			PCStart = 0x6A;
 			PCStop = 0x6A;
 			HighlightedLine = 12;
-			sExplanation = "PasswordOkay() is done, so it will deallocate its stack space and return contorl to main()";
+			sExplanation = "check_password() is done, so it will deallocate its stack space and return contorl to main()";
 			break;
 		case 20:
 			PCStart = 0x17;

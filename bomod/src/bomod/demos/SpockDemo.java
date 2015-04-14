@@ -5,6 +5,7 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 
+import bomod.OSUtils;
 import bomod.demos.spock.Spock;
 
 /**
@@ -21,8 +22,19 @@ public class SpockDemo extends JFrame {
 	}
 
 	private void init() {
+		Spock applet = new Spock();
+		// initialize the applet with default color scheme
+		applet.init();
+		// add applet to the application window
+		add(applet, BorderLayout.CENTER);
 		setTitle("BOMod Spock Demo");
-		setSize(770, 490);
+		
+		if(OSUtils.isWindows()){
+			setSize(Spock.MAXWIDTH + (Spock.XADD * 4), Spock.MAXHEIGHT + (Spock.YADD * 2));
+		} else {
+			setSize(Spock.MAXWIDTH + (Spock.XADD * 2), Spock.MAXHEIGHT + 70);
+		}
+
 		setLocationRelativeTo(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -31,9 +43,6 @@ public class SpockDemo extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				SpockDemo app = new SpockDemo();
-				Spock applet = new Spock();
-				applet.init();
-				app.add(applet, BorderLayout.CENTER);
 				app.setVisible(true);
 			}
 		});

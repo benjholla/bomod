@@ -34,10 +34,8 @@ public class Smasher extends DemoApplet {
 	protected static final String STEPBACK = "stepback";
 	protected static final String RESET = "reset";
 
-	protected SmasherMachineContext m;
-
-	int PlayDelay;
-	int PCDelay;
+	private SmasherMachineContext m;
+	private int PlayDelay;
 
 	@Override
 	public void init() {
@@ -51,7 +49,6 @@ public class Smasher extends DemoApplet {
 
 		// load settings
 		PlayDelay = (Integer) parameters.get(PLAY_DELAY_PARAM);
-		PCDelay = (Integer) parameters.get(PC_DELAY_PARAM);
 		m.BackgroundColor = (Color) parameters.get(BACKGROUND_COLOR_PARAM);
 		m.CodeColor1 = (Color) parameters.get(CODE_COLOR1_PARAM);
 		m.CodeColor2 = (Color) parameters.get(CODE_COLOR2_PARAM);
@@ -110,18 +107,18 @@ public class Smasher extends DemoApplet {
 	public static final int MAXHEIGHT = 420;
 	public static final int XADD = 10;
 	public static final int YADD = 40;
-	protected static final int XCODEADD = XADD + 20;
-	protected static final int YCODEADD = YADD + 20;
-	protected static final int CODESPACING = 16;
-	protected static final int HIGHLIGHTWIDTH = 360;
-	protected static final int XMEMADD = XADD + 460;
-	protected static final int YMEMADD = YADD + 124;
-	protected static final int MEMSPACING = 16;
-	protected static final int XOUTPUTADD = XMEMADD;
-	protected static final int YOUTPUTADD = YCODEADD - 8;
-	protected static final int OUTPUTWIDTH = 256;
-	protected static final int OUTPUTHEIGHT = 16 * 5;
-	protected static final int OUTPUTSPACING = 16;
+	public static final int XCODEADD = XADD + 20;
+	public static final int YCODEADD = YADD + 20;
+	public static final int CODESPACING = 16;
+	public static final int HIGHLIGHTWIDTH = 360;
+	public static final int XMEMADD = XADD + 460;
+	public static final int YMEMADD = YADD + 124;
+	public static final int MEMSPACING = 16;
+	public static final int XOUTPUTADD = XMEMADD;
+	public static final int YOUTPUTADD = YCODEADD - 8;
+	public static final int OUTPUTWIDTH = 256;
+	public static final int OUTPUTHEIGHT = 16 * 5;
+	public static final int OUTPUTSPACING = 16;
 
 	boolean bMemoryOnly = false;
 

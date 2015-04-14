@@ -49,26 +49,26 @@ public class StackGuardMachineContext extends MachineContext {
 
 		Code[0] = new LineOfCode("#include <stdio.h>", Color.white);
 		Code[1] = new LineOfCode("", Color.white);
-		Code[2] = new LineOfCode("typedef char t_STRING[10]", Color.white);
+		Code[2] = new LineOfCode("typedef char t_STRING[10];", Color.white);
 		Code[3] = new LineOfCode("", Color.white);
-		Code[4] = new LineOfCode("void GetString(t_STRING sAString)", CodeColor1);
+		Code[4] = new LineOfCode("void get_string(t_STRING str)", CodeColor1);
 		Code[5] = new LineOfCode("{", CodeColor1);
-		Code[6] = new LineOfCode("  gets(sAString);", CodeColor1);
+		Code[6] = new LineOfCode("  gets(str);", CodeColor1);
 		Code[7] = new LineOfCode("  puts(\"You entered:\");", CodeColor1);
-		Code[8] = new LineOfCode("  puts(sAString);", CodeColor1);
+		Code[8] = new LineOfCode("  puts(str);", CodeColor1);
 		Code[9] = new LineOfCode("}", CodeColor1);
 		Code[10] = new LineOfCode("", StackContentsColor);
-		Code[11] = new LineOfCode("void DontCallThisFunction()", CodeColor2);
+		Code[11] = new LineOfCode("void forbidden_function()", CodeColor2);
 		Code[12] = new LineOfCode("{", CodeColor2);
 		Code[13] = new LineOfCode("  puts(\"Oh, bother.\");", CodeColor2);
 		Code[14] = new LineOfCode("}", CodeColor2);
 		Code[15] = new LineOfCode("", StackContentsColor);
 		Code[16] = new LineOfCode("void main()", CodeColor3);
 		Code[17] = new LineOfCode("{", CodeColor3);
-		Code[18] = new LineOfCode("  t_STRING sMyString = \"Hello.\";", CodeColor3);
+		Code[18] = new LineOfCode("  t_STRING my_string = \"Hello.\";", CodeColor3);
 		Code[19] = new LineOfCode("", CodeColor3);
 		Code[20] = new LineOfCode("  puts(\"Enter something:\");", CodeColor3);
-		Code[21] = new LineOfCode("  GetString(sMyString);", CodeColor3);
+		Code[21] = new LineOfCode("  get_string(my_string);", CodeColor3);
 		Code[22] = new LineOfCode("}", CodeColor3);
 		NumCodeLines = 23;
 
@@ -108,7 +108,7 @@ public class StackGuardMachineContext extends MachineContext {
 			PCStart = 0x12;
 			PCStop = 0x23;
 			HighlightedLine = 21;
-			sExplanation = "main() will call GetString() now, but notice that there will be an extra byte on the stack";
+			sExplanation = "main() will call get_string() now, but notice that there will be an extra byte on the stack";
 			break;
 		case 4:
 			PCStart = 0x24;
@@ -140,7 +140,7 @@ public class StackGuardMachineContext extends MachineContext {
 			PCStart = 0x43;
 			PCStop = 0x43;
 			HighlightedLine = 9;
-			sExplanation = "Now GetString() checks the integrity of the canary before it uses the return address";
+			sExplanation = "Now get_string() checks the integrity of the canary before it uses the return address";
 			break;
 		case 9:
 			PCStart = 0x23;
