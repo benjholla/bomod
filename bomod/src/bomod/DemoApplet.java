@@ -41,8 +41,13 @@ public abstract class DemoApplet extends Applet implements ActionListener, KeyLi
 	
 	public void init() {
 		try {
-			setParameter(PLAY_DELAY_PARAM, this.getParameter(PLAY_DELAY_PARAM));
-			setParameter(PC_DELAY_PARAM, this.getParameter(PC_DELAY_PARAM));
+			if(this.getParameter(PLAY_DELAY_PARAM) != null){
+				setParameter(PLAY_DELAY_PARAM, this.getParameter(PLAY_DELAY_PARAM));
+			}
+			
+			if(this.getParameter(PC_DELAY_PARAM) != null){
+				setParameter(PC_DELAY_PARAM, this.getParameter(PC_DELAY_PARAM));
+			}
 			
 			String backgroundColorParam = new String(this.getParameter(BACKGROUND_COLOR_PARAM));
 			setParameter(BACKGROUND_COLOR_PARAM, new Color(Integer.parseInt(backgroundColorParam.substring(0, 2), 16), 

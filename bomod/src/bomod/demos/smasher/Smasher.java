@@ -22,7 +22,9 @@ import bomod.DemoApplet;
  * @author Benjamin Holland <bholland@iastate.edu>
  */
 public class Smasher extends DemoApplet {
-	public Smasher() {}
+	public Smasher() {
+		super();
+	}
 
 	private static final long serialVersionUID = 1L;
 	protected Button bPlay, bStop, bStepForward, bReset;
