@@ -18,6 +18,7 @@ This repository has made the following changes to the original demo source code.
 
 ## Change Log
 **[Release 2](https://github.com/benjholla/bomod/releases/tag/bomod_r2)**
+
 1. Refined example code to use standard variable/function naming conventions
 2. Factored out large amounts of duplicate code into common parent class, bug fixes, style changes, etc.
 3. Added capability to override code segment coloring in application wrapper while maintaining applet level features
