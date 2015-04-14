@@ -1,32 +1,30 @@
 package bomod.smasher;
 
-import java.applet.Applet;
 import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Graphics;
+import java.awt.Label;
 import java.awt.TextField;
 import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
+
+import bomod.DemoApplet;
 
 /**
  * Main source file for the Smasher applet
  * 
- * Original source by Jedidiah Crandall Java 1.7 compatibility modifications and
- * style changes by Ben Holland
+ * Original source by Jedidiah Crandall Java 1.7 compatibility modifications, code cleanup, 
+ * example code style and grammar fixes, example input state checks by Ben Holland
  * 
  * @author Jedidiah Crandall <crandaj@erau.edu>
  * @author Benjamin Holland <bholland@iastate.edu>
  */
-public class Smasher extends Applet implements ActionListener, KeyListener {
-	public Smasher() {
-	}
+public class Smasher extends DemoApplet {
+	public Smasher() {}
 
 	private static final long serialVersionUID = 1L;
-
 	protected Button bPlay, bStop, bStepForward, bReset;
 	protected Checkbox cbStep;
 	protected TextField typingArea;
@@ -41,12 +39,9 @@ public class Smasher extends Applet implements ActionListener, KeyListener {
 	int PlayDelay;
 	int PCDelay;
 
+	@Override
 	public void init() {
-		int r, g, b;
-		String sRed, sGreen, sBlue;
-		String s;
-		Integer IPlayDelay;
-		Integer IPCDelay;
+		super.init();
 
 		m = new SmasherMachineContext();
 		makeContentPane();
@@ -54,96 +49,17 @@ public class Smasher extends Applet implements ActionListener, KeyListener {
 		bPlay.setEnabled(true);
 		bReset.setEnabled(false);
 
-		try {
-			s = new String(this.getParameter("playdelay"));
-			IPlayDelay = new Integer(s);
-			PlayDelay = IPlayDelay.intValue();
-		} catch (Exception e) {
-			PlayDelay = 2750;
-		}
-
-		try {
-			s = new String(this.getParameter("pcdelay"));
-			IPCDelay = new Integer(s);
-			PCDelay = IPCDelay.intValue();
-		} catch (Exception e) {
-			PCDelay = 30;
-		}
-
-		try {
-			s = new String(this.getParameter("backgroundcolor"));
-			sRed = new String(s.substring(0, 2));
-			sGreen = new String(s.substring(2, 4));
-			sBlue = new String(s.substring(4, 6));
-			r = Integer.parseInt(sRed, 16);
-			g = Integer.parseInt(sGreen, 16);
-			b = Integer.parseInt(sBlue, 16);
-			m.BackgroundColor = new Color(r, g, b);
-
-			s = new String(this.getParameter("codecolor1"));
-			sRed = new String(s.substring(0, 2));
-			sGreen = new String(s.substring(2, 4));
-			sBlue = new String(s.substring(4, 6));
-			r = Integer.parseInt(sRed, 16);
-			g = Integer.parseInt(sGreen, 16);
-			b = Integer.parseInt(sBlue, 16);
-			m.CodeColor1 = new Color(r, g, b);
-
-			s = new String(this.getParameter("codecolor2"));
-			sRed = new String(s.substring(0, 2));
-			sGreen = new String(s.substring(2, 4));
-			sBlue = new String(s.substring(4, 6));
-			r = Integer.parseInt(sRed, 16);
-			g = Integer.parseInt(sGreen, 16);
-			b = Integer.parseInt(sBlue, 16);
-			m.CodeColor2 = new Color(r, g, b);
-
-			s = new String(this.getParameter("codecolor3"));
-			sRed = new String(s.substring(0, 2));
-			sGreen = new String(s.substring(2, 4));
-			sBlue = new String(s.substring(4, 6));
-			r = Integer.parseInt(sRed, 16);
-			g = Integer.parseInt(sGreen, 16);
-			b = Integer.parseInt(sBlue, 16);
-			m.CodeColor3 = new Color(r, g, b);
-
-			s = new String(this.getParameter("codecolor4"));
-			sRed = new String(s.substring(0, 2));
-			sGreen = new String(s.substring(2, 4));
-			sBlue = new String(s.substring(4, 6));
-			r = Integer.parseInt(sRed, 16);
-			g = Integer.parseInt(sGreen, 16);
-			b = Integer.parseInt(sBlue, 16);
-			m.CodeColor4 = new Color(r, g, b);
-
-			s = new String(this.getParameter("stackcontentscolor"));
-			sRed = new String(s.substring(0, 2));
-			sGreen = new String(s.substring(2, 4));
-			sBlue = new String(s.substring(4, 6));
-			r = Integer.parseInt(sRed, 16);
-			g = Integer.parseInt(sGreen, 16);
-			b = Integer.parseInt(sBlue, 16);
-			m.StackContentsColor = new Color(r, g, b);
-
-			s = new String(this.getParameter("returnpointercolor"));
-			sRed = new String(s.substring(0, 2));
-			sGreen = new String(s.substring(2, 4));
-			sBlue = new String(s.substring(4, 6));
-			r = Integer.parseInt(sRed, 16);
-			g = Integer.parseInt(sGreen, 16);
-			b = Integer.parseInt(sBlue, 16);
-			m.ReturnPointerColor = new Color(r, g, b);
-		} catch (Exception E) {
-			// just use the default colors
-			m.BackgroundColor = new Color(0, 0, 128);
-			m.CodeColor1 = new Color(255, 255, 0);
-			m.CodeColor2 = new Color(128, 255, 64);
-			m.CodeColor3 = new Color(255, 0, 255);
-			m.CodeColor4 = new Color(0, 255, 255);
-			m.StackContentsColor = new Color(0, 0, 0);
-			m.ReturnPointerColor = new Color(0, 0, 0);
-		}
-
+		// load settings
+		PlayDelay = (Integer) parameters.get(PLAY_DELAY_PARAM);
+		PCDelay = (Integer) parameters.get(PC_DELAY_PARAM);
+		m.BackgroundColor = (Color) parameters.get(BACKGROUND_COLOR_PARAM);
+		m.CodeColor1 = (Color) parameters.get(CODE_COLOR1_PARAM);
+		m.CodeColor2 = (Color) parameters.get(CODE_COLOR2_PARAM);
+		m.CodeColor3 = (Color) parameters.get(CODE_COLOR3_PARAM);
+		m.CodeColor4 = (Color) parameters.get(CODE_COLOR4_PARAM);
+		m.StackContentsColor = (Color) parameters.get(STACK_CONTENTS_COLOR_PARAM);
+		m.ReturnPointerColor = (Color) parameters.get(RETURN_POINTER_COLOR_PARAM);
+		
 		m.Reset();
 	}
 
@@ -177,13 +93,14 @@ public class Smasher extends Applet implements ActionListener, KeyListener {
 		add(bStop);
 		add(bStepForward);
 		add(bReset);
+		add(new Label("Input:"));
 		add(typingArea);
 	}
 
-	protected static final int MAXWIDTH = 750;
-	protected static final int MAXHEIGHT = 420;
-	protected static final int XADD = 10;
-	protected static final int YADD = 40;
+	public static final int MAXWIDTH = 750;
+	public static final int MAXHEIGHT = 420;
+	public static final int XADD = 10;
+	public static final int YADD = 40;
 	protected static final int XCODEADD = XADD + 20;
 	protected static final int YCODEADD = YADD + 20;
 	protected static final int CODESPACING = 16;
@@ -300,7 +217,8 @@ public class Smasher extends Applet implements ActionListener, KeyListener {
 	boolean bWasPlaying = false;
 
 	public void keyTyped(KeyEvent e) {
-		char c = e.getKeyChar();
+		char c = Character.toUpperCase(e.getKeyChar());
+		e.consume(); // prevent the character from actually being typed, we will set it ourselves
 		if ((c == '\n') && (typingArea.isEnabled())) {
 			if (bWasPlaying) {
 				bWasPlaying = false;
@@ -310,16 +228,14 @@ public class Smasher extends Applet implements ActionListener, KeyListener {
 				bStepForward.setEnabled(false);
 				bPlaying = true;
 				MyPlayer.Play();
-			} else if (!bStepping)
+			} else if (!bStepping){
 				StepOnce();
-		} else if (((c >= 'A') && (c <= 'Z')) || ((c >= 'a') && (c <= 'z'))) {
-			Character ch = new Character(c);
-			String s = ch.toString();
-			s = s.toUpperCase();
+			}
+		} else if (((c >= 'A') && (c <= 'Z'))) {
 			if ((UserInputIndex - m.InputStart) < 25) {
-				m.sSaveIt = m.sSaveIt.concat(s);
-				m.Output[1] = m.Output[1].concat(s);
-				m.Memory[UserInputIndex].Contents = s;
+				m.sSaveIt = m.sSaveIt += c;
+				m.Output[1] = m.Output[1] += c;
+				m.Memory[UserInputIndex].Contents = ("" + c);
 				UserInputIndex++;
 			} else {
 				typingArea.setEnabled(false);
@@ -327,13 +243,13 @@ public class Smasher extends Applet implements ActionListener, KeyListener {
 			bMemoryOnly = true;
 			repaint();
 		}
+		typingArea.setText(m.sSaveIt.toUpperCase());
+		typingArea.setCaretPosition(typingArea.getText().length());
 	}
 
-	public void keyPressed(KeyEvent e) {
-	}
+	public void keyPressed(KeyEvent e) {}
 
-	public void keyReleased(KeyEvent e) {
-	}
+	public void keyReleased(KeyEvent e) {}
 
 	public void StepOnce() {
 		boolean ThisIsNotTheEnd;

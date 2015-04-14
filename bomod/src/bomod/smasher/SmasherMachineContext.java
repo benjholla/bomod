@@ -51,24 +51,24 @@ public class SmasherMachineContext extends MachineContext {
 		Code[1] = new LineOfCode("", Color.white);
 		Code[2] = new LineOfCode("typedef char t_STRING[10]", Color.white);
 		Code[3] = new LineOfCode("", Color.white);
-		Code[4] = new LineOfCode("void GetString(t_STRING sAString)", CodeColor1);
+		Code[4] = new LineOfCode("void get_string(t_STRING str)", CodeColor1);
 		Code[5] = new LineOfCode("{", CodeColor1);
-		Code[6] = new LineOfCode("  gets(sAString);", CodeColor1);
+		Code[6] = new LineOfCode("  gets(str);", CodeColor1);
 		Code[7] = new LineOfCode("  puts(\"You entered:\");", CodeColor1);
-		Code[8] = new LineOfCode("  puts(sAString);", CodeColor1);
+		Code[8] = new LineOfCode("  puts(str);", CodeColor1);
 		Code[9] = new LineOfCode("}", CodeColor1);
 		Code[10] = new LineOfCode("", StackContentsColor);
-		Code[11] = new LineOfCode("void DontCallThisFunction()", CodeColor2);
+		Code[11] = new LineOfCode("void forbidden_function()", CodeColor2);
 		Code[12] = new LineOfCode("{", CodeColor2);
 		Code[13] = new LineOfCode("  puts(\"Oh, bother.\");", CodeColor2);
 		Code[14] = new LineOfCode("}", CodeColor2);
 		Code[15] = new LineOfCode("", StackContentsColor);
 		Code[16] = new LineOfCode("void main()", CodeColor3);
 		Code[17] = new LineOfCode("{", CodeColor3);
-		Code[18] = new LineOfCode("  t_STRING sMyString = \"Hello.\";", CodeColor3);
+		Code[18] = new LineOfCode("  t_STRING my_string = \"Hello.\";", CodeColor3);
 		Code[19] = new LineOfCode("", CodeColor3);
 		Code[20] = new LineOfCode("  puts(\"Enter something:\");", CodeColor3);
-		Code[21] = new LineOfCode("  GetString(sMyString);", CodeColor3);
+		Code[21] = new LineOfCode("  get_string(my_string);", CodeColor3);
 		Code[22] = new LineOfCode("}", CodeColor3);
 		NumCodeLines = 23;
 
@@ -110,13 +110,13 @@ public class SmasherMachineContext extends MachineContext {
 			PCStart = 0x12;
 			PCStop = 0x23;
 			HighlightedLine = 21;
-			sExplanation = "Now main() will make a call to GetString()";
+			sExplanation = "Now main() will make a call to get_string()";
 			break;
 		case 4:
 			PCStart = 0x24;
 			PCStop = 0x24;
 			HighlightedLine = 5;
-			sExplanation = "GetString has some stack space and also a return pointer to main (the '$')";
+			sExplanation = "get_string has some stack space and also a return pointer to main (the '$')";
 			break;
 		case 5:
 			PCStart = 0x24;
@@ -142,32 +142,32 @@ public class SmasherMachineContext extends MachineContext {
 			PCStart = 0x43;
 			PCStop = 0x43;
 			HighlightedLine = 9;
-			sExplanation = "Things get interesting when GetString() reads the return address and uses it to return control, supposedly to main()";
+			sExplanation = "Things get interesting when get_string() reads the return address and uses it to return control, supposedly to main()";
 			break;
 		case 9:
 			PCStart = 0x23;
 			PCStop = 0x23;
 			HighlightedLine = 22;
-			sExplanation = "Control was returned to main(), but can you think of a way to call the forbidden red function?  Hint: What is the ASCII character for 0x44?";
+			sExplanation = "Control was returned to main(), but can you think of a way to call the forbidden function?  Hint: What is the ASCII character for 0x44?";
 			return false;
 		case 20:
 			Memory[0x43].Contents = "";
 			PCStart = 0x44;
 			PCStop = 0x44;
 			HighlightedLine = 12;
-			sExplanation = "The return address pointed to the forbidden red function so you ended up here";
+			sExplanation = "The return address pointed to the forbidden function so you ended up here";
 			break;
 		case 21:
 			PCStart = 0x44;
 			PCStop = 0x6A;
 			HighlightedLine = 13;
-			sExplanation = "The forbidden red function could be anything, such as a root shell or a virus placed by an attacker";
+			sExplanation = "The forbidden function could be anything, such as a root shell or a virus placed by an attacker";
 			break;
 		case 22:
 			PCStart = 0x6A;
 			PCStop = 0x6A;
 			HighlightedLine = 14;
-			sExplanation = "An attacker could get their code into memory, on the stack or the heap, by using you're program's input routines";
+			sExplanation = "An attacker could get their code into memory, on the stack or the heap, by using your program's input routines";
 			return false;
 		case 40:
 			PCStart = 0x43;
