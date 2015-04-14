@@ -1,5 +1,5 @@
 # Buffer Overflow Module (bomod)
-This project is a fork mof the [original Buffer Overflow Module](http://nsfsecurity.pr.erau.edu/bom/) created by [NSF Award No. 0113627](http://www.nsf.gov/awardsearch/showAward?AWD_ID=0113627).
+This project is a fork of the [original Buffer Overflow Module](http://nsfsecurity.pr.erau.edu/bom/) created by [NSF Award No. 0113627](http://www.nsf.gov/awardsearch/showAward?AWD_ID=0113627).
 
 ## Module Overview
 
