@@ -16,6 +16,14 @@ The original demos were created as Java Applets to be viewed through a web brows
 
 This repository has made the following changes to the original demo source code.
 
+## Change Log
+**[Release 2](https://github.com/benjholla/bomod/releases/tag/bomod_r2)**
+1. Refined example code to use standard variable/function naming conventions
+2. Factored out large amounts of duplicate code into common parent class, bug fixes, style changes, etc.
+3. Added capability to override code segment coloring in application wrapper while maintaining applet level features
+
+**[Release 1](https://github.com/benjholla/bomod/releases/tag/bomod_r1)**
+
 1. Created an Eclipse project and added source files
 2. Added application wrappers around each demo Applet
 3. Reorganized source into appropriate packages
