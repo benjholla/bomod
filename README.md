@@ -48,3 +48,11 @@ The following descriptions of each demo are taken from [http://nsfsecurity.pr.er
 4. **Smasher**: Demonstrates a "stack attack," more commonly referred to as "stack smashing." 
 5. **StackGuard**: This demo shows how the StackGuard compiler can help prevent "stack attacks." 
 
+## Simulator Memory Overview
+- There are 256 bytes of memory.  Memory is laid out right to left and top to bottom (just like a book).  The first byte of memory is at address 0x00, the second byte is at address 0x01, and the last byte is at address 0xFF.
+- A `*` indicates the current position of the program counter (the current instruction to be executed).
+- A `X` indicates where a subroutine was called and where the program pointer will return to after the subroutine is finished executing.
+- The color of the C code for each subroutine matches the color of the corresponding subroutine memory location.
+- A `$` indicates a return pointer to the subroutine with the same color as the `$` address.
+- A `?` indicates a stack canary.
+- For additional details see [http://nsfsecurity.pr.erau.edu/bom_docs/ppts/IntroToBOmod.ppt](http://nsfsecurity.pr.erau.edu/bom_docs/ppts/IntroToBOmod.ppt).
