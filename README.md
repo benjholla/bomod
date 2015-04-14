@@ -54,5 +54,5 @@ The following descriptions of each demo are taken from [http://nsfsecurity.pr.er
 - A `X` indicates where a subroutine was called and where the program pointer will return to after the subroutine is finished executing.
 - The color of the C code for each subroutine matches the color of the corresponding subroutine memory location.
 - A `$` indicates a return pointer to the subroutine with the same color as the `$` address.
-- A `?` indicates a stack canary.
+- A `?` indicates a stack canary.  If the value of a canary changes, then the stack guard check will fail.
 - For additional details see [http://nsfsecurity.pr.erau.edu/bom_docs/ppts/IntroToBOmod.ppt](http://nsfsecurity.pr.erau.edu/bom_docs/ppts/IntroToBOmod.ppt).
