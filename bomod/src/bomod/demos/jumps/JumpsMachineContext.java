@@ -3,6 +3,7 @@ package bomod.demos.jumps;
 import java.awt.Color;
 
 import bomod.MachineContext;
+import bomod.MachineContext.MemorySpot;
 
 /**
  * Machine context specific to the Jumps applet
@@ -82,7 +83,8 @@ public class JumpsMachineContext extends MachineContext {
 			} else if (Loop <= 0x5D) {
 				Memory[Loop] = new MemorySpot("", StackContentsColor, CodeColor2);
 			} else {
-				Memory[Loop] = new MemorySpot("", StackContentsColor, Color.darkGray);
+				Memory[Loop] = new MemorySpot("", StackContentsColor, MemoryDefaultBackgroundColor);
+//				Memory[Loop] = new MemorySpot("", MemoryDefaultForegroundColor, MemoryDefaultBackgroundColor);
 			}
 		}
 		return true;
@@ -258,37 +260,37 @@ public class JumpsMachineContext extends MachineContext {
 		case 11:
 			TheStack[12].Contents = "";
 			TheStack[12].FGColor = StackContentsColor;
-			TheStack[12].BGColor = Color.darkGray;
+			TheStack[12].BGColor = MemoryDefaultBackgroundColor;;
 			Memory[0xCC] = TheStack[12];
 			break;
 		case 12:
 			TheStack[3].Contents = "";
-			TheStack[3].FGColor = Color.white;
-			TheStack[3].BGColor = Color.darkGray;
+			TheStack[3].FGColor = MemoryDefaultForegroundColor;
+			TheStack[3].BGColor = MemoryDefaultBackgroundColor;;
 			TheStack[4].Contents = "";
-			TheStack[4].FGColor = Color.white;
-			TheStack[4].BGColor = Color.darkGray;
+			TheStack[4].FGColor = MemoryDefaultForegroundColor;
+			TheStack[4].BGColor = MemoryDefaultBackgroundColor;;
 			TheStack[5].Contents = "";
-			TheStack[5].FGColor = Color.white;
-			TheStack[5].BGColor = Color.darkGray;
+			TheStack[5].FGColor = MemoryDefaultForegroundColor;
+			TheStack[5].BGColor = MemoryDefaultBackgroundColor;;
 			TheStack[6].Contents = "";
-			TheStack[6].FGColor = Color.white;
-			TheStack[6].BGColor = Color.darkGray;
+			TheStack[6].FGColor = MemoryDefaultForegroundColor;
+			TheStack[6].BGColor = MemoryDefaultBackgroundColor;;
 			TheStack[7].Contents = "";
-			TheStack[7].FGColor = Color.white;
-			TheStack[7].BGColor = Color.darkGray;
+			TheStack[7].FGColor = MemoryDefaultForegroundColor;
+			TheStack[7].BGColor = MemoryDefaultBackgroundColor;;
 			TheStack[8].Contents = "";
-			TheStack[8].FGColor = Color.white;
-			TheStack[8].BGColor = Color.darkGray;
+			TheStack[8].FGColor = MemoryDefaultForegroundColor;
+			TheStack[8].BGColor = MemoryDefaultBackgroundColor;;
 			TheStack[9].Contents = "";
-			TheStack[9].FGColor = Color.white;
-			TheStack[9].BGColor = Color.darkGray;
+			TheStack[9].FGColor = MemoryDefaultForegroundColor;
+			TheStack[9].BGColor = MemoryDefaultBackgroundColor;;
 			TheStack[10].Contents = "";
-			TheStack[10].FGColor = Color.white;
-			TheStack[10].BGColor = Color.darkGray;
+			TheStack[10].FGColor = MemoryDefaultForegroundColor;
+			TheStack[10].BGColor = MemoryDefaultBackgroundColor;;
 			TheStack[11].Contents = "";
-			TheStack[11].FGColor = Color.white;
-			TheStack[11].BGColor = Color.darkGray;
+			TheStack[11].FGColor = MemoryDefaultForegroundColor;
+			TheStack[11].BGColor = MemoryDefaultBackgroundColor;;
 			Memory[0xC3] = TheStack[3];
 			Memory[0xC4] = TheStack[4];
 			Memory[0xC5] = TheStack[5];
@@ -311,20 +313,20 @@ public class JumpsMachineContext extends MachineContext {
 			break;
 		case 16:
 			TheStack[3].Contents = "";
-			TheStack[3].FGColor = Color.white;
-			TheStack[3].BGColor = Color.darkGray;
+			TheStack[3].FGColor = MemoryDefaultForegroundColor;
+			TheStack[3].BGColor = MemoryDefaultBackgroundColor;;
 			Memory[0xC3] = TheStack[3];
 			break;
 		case 17:
 			TheStack[0].Contents = "";
-			TheStack[0].FGColor = Color.white;
-			TheStack[0].BGColor = Color.darkGray;
+			TheStack[0].FGColor = MemoryDefaultForegroundColor;
+			TheStack[0].BGColor = MemoryDefaultBackgroundColor;;
 			TheStack[1].Contents = "";
-			TheStack[1].FGColor = Color.white;
-			TheStack[1].BGColor = Color.darkGray;
+			TheStack[1].FGColor = MemoryDefaultForegroundColor;
+			TheStack[1].BGColor = MemoryDefaultBackgroundColor;;
 			TheStack[2].Contents = "";
-			TheStack[2].FGColor = Color.white;
-			TheStack[2].BGColor = Color.darkGray;
+			TheStack[2].FGColor = MemoryDefaultForegroundColor;
+			TheStack[2].BGColor = MemoryDefaultBackgroundColor;;
 			Memory[0xC0] = TheStack[0];
 			Memory[0xC1] = TheStack[1];
 			Memory[0xC2] = TheStack[2];

@@ -14,6 +14,12 @@ public abstract class DemoApplet extends Applet implements ActionListener, KeyLi
 	
 	public static final String PLAY_DELAY_PARAM = "playdelay";
 	public static final String BACKGROUND_COLOR_PARAM = "backgroundcolor";
+	public static final String CONSOLE_BACKGROUND_COLOR_PARAM = "consolebackgroundcolor";
+	public static final String CONSOLE_TEXT_COLOR_PARAM = "consoletextcolor";
+	public static final String MEMORY_DEFAULT_FORGROUND_COLOR_PARAM = "memorydefaultforgroundcolor";
+	public static final String MEMORY_DEFAULT_BACKGROUND_COLOR_PARAM = "memorydefaultbackgroundcolor";
+	public static final String HINT_TEXT_COLOR_PARAM = "hinttextcolor";
+	public static final String DEFAULT_CODE_COLOR_PARAM = "defaultcodecolor";
 	public static final String CODE_COLOR1_PARAM = "codecolor1";
 	public static final String CODE_COLOR2_PARAM = "codecolor2";
 	public static final String CODE_COLOR3_PARAM = "codecolor3";
@@ -24,13 +30,19 @@ public abstract class DemoApplet extends Applet implements ActionListener, KeyLi
 	public DemoApplet(){
 		// default settings
 		setParameter(PLAY_DELAY_PARAM, new Integer(2750));
-		setParameter(BACKGROUND_COLOR_PARAM,new Color(0, 0, 128));
+		setParameter(BACKGROUND_COLOR_PARAM, new Color(0, 0, 128));
+		setParameter(HINT_TEXT_COLOR_PARAM, Color.WHITE);
+		setParameter(CONSOLE_BACKGROUND_COLOR_PARAM, Color.GRAY);
+		setParameter(MEMORY_DEFAULT_FORGROUND_COLOR_PARAM, Color.WHITE);
+		setParameter(MEMORY_DEFAULT_BACKGROUND_COLOR_PARAM, Color.GRAY);
+		setParameter(CONSOLE_TEXT_COLOR_PARAM, Color.WHITE);
+		setParameter(DEFAULT_CODE_COLOR_PARAM, Color.WHITE);
 		setParameter(CODE_COLOR1_PARAM, new Color(255, 255, 0));
 		setParameter(CODE_COLOR2_PARAM, new Color(128, 255, 64));
 		setParameter(CODE_COLOR3_PARAM, new Color(255, 0, 255));
 		setParameter(CODE_COLOR4_PARAM, new Color(0, 255, 255));
-		setParameter(STACK_CONTENTS_COLOR_PARAM, new Color(0, 0, 0));
-		setParameter(RETURN_POINTER_COLOR_PARAM, new Color(0, 0, 0));
+		setParameter(STACK_CONTENTS_COLOR_PARAM, Color.BLACK);
+		setParameter(RETURN_POINTER_COLOR_PARAM, Color.BLACK);
 	}
 	
 	public void setParameter(String name, Object value){
@@ -48,13 +60,43 @@ public abstract class DemoApplet extends Applet implements ActionListener, KeyLi
 													  	   Integer.parseInt(backgroundColorParam.substring(2, 4), 16), 
 													  	   Integer.parseInt(backgroundColorParam.substring(4, 6), 16)));
 
+			String memoryDefaultBackgroundColorParam = new String(this.getParameter(MEMORY_DEFAULT_BACKGROUND_COLOR_PARAM));
+			setParameter(MEMORY_DEFAULT_BACKGROUND_COLOR_PARAM, new Color(Integer.parseInt(memoryDefaultBackgroundColorParam.substring(0, 2), 16), 
+													  	   Integer.parseInt(memoryDefaultBackgroundColorParam.substring(2, 4), 16), 
+													  	   Integer.parseInt(memoryDefaultBackgroundColorParam.substring(4, 6), 16)));
+			
+			String memoryDefaultForgroundColorParam = new String(this.getParameter(MEMORY_DEFAULT_FORGROUND_COLOR_PARAM));
+			setParameter(MEMORY_DEFAULT_FORGROUND_COLOR_PARAM, new Color(Integer.parseInt(memoryDefaultForgroundColorParam.substring(0, 2), 16), 
+													  	   Integer.parseInt(memoryDefaultForgroundColorParam.substring(2, 4), 16), 
+													  	   Integer.parseInt(memoryDefaultForgroundColorParam.substring(4, 6), 16)));
+			
+			String consoleBackgroundColorParam = new String(this.getParameter(CONSOLE_BACKGROUND_COLOR_PARAM));
+			setParameter(CONSOLE_BACKGROUND_COLOR_PARAM, new Color(Integer.parseInt(consoleBackgroundColorParam.substring(0, 2), 16), 
+													  	   Integer.parseInt(consoleBackgroundColorParam.substring(2, 4), 16), 
+													  	   Integer.parseInt(consoleBackgroundColorParam.substring(4, 6), 16)));
+			
+			String consoleTextColorParam = new String(this.getParameter(CONSOLE_TEXT_COLOR_PARAM));
+			setParameter(CONSOLE_TEXT_COLOR_PARAM, new Color(Integer.parseInt(consoleTextColorParam.substring(0, 2), 16), 
+													  	   Integer.parseInt(consoleTextColorParam.substring(2, 4), 16), 
+													  	   Integer.parseInt(consoleTextColorParam.substring(4, 6), 16)));
+			
+			String hintTextColorParam = new String(this.getParameter(HINT_TEXT_COLOR_PARAM));
+			setParameter(HINT_TEXT_COLOR_PARAM, new Color(Integer.parseInt(hintTextColorParam.substring(0, 2), 16), 
+													  	   Integer.parseInt(hintTextColorParam.substring(2, 4), 16), 
+													  	   Integer.parseInt(hintTextColorParam.substring(4, 6), 16)));
+			
+			String defaultCodeColorParam = new String(this.getParameter(DEFAULT_CODE_COLOR_PARAM));
+			setParameter(DEFAULT_CODE_COLOR_PARAM, new Color(Integer.parseInt(defaultCodeColorParam.substring(0, 2), 16), 
+												 	  Integer.parseInt(defaultCodeColorParam.substring(2, 4), 16), 
+												 	  Integer.parseInt(defaultCodeColorParam.substring(4, 6), 16)));
+			
 			String codeColor1Param = new String(this.getParameter(CODE_COLOR1_PARAM));
 			setParameter(CODE_COLOR1_PARAM, new Color(Integer.parseInt(codeColor1Param.substring(0, 2), 16), 
 												 	  Integer.parseInt(codeColor1Param.substring(2, 4), 16), 
 												 	  Integer.parseInt(codeColor1Param.substring(4, 6), 16)));
 			
 			String codeColor2Param = new String(this.getParameter(CODE_COLOR2_PARAM));
-			setParameter("CODE_COLOR2_PARAM", new Color(Integer.parseInt(codeColor2Param.substring(0, 2), 16), 
+			setParameter(CODE_COLOR2_PARAM, new Color(Integer.parseInt(codeColor2Param.substring(0, 2), 16), 
 											     	 	Integer.parseInt(codeColor2Param.substring(2, 4), 16), 
 											     	 	Integer.parseInt(codeColor2Param.substring(4, 6), 16)));
 

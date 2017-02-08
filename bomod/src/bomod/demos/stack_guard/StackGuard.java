@@ -52,6 +52,12 @@ public class StackGuard extends DemoApplet {
 		// load settings
 		PlayDelay = (Integer) parameters.get(PLAY_DELAY_PARAM);
 		m.BackgroundColor = (Color) parameters.get(BACKGROUND_COLOR_PARAM);
+		m.MemoryDefaultForegroundColor = (Color) parameters.get(MEMORY_DEFAULT_FORGROUND_COLOR_PARAM);
+		m.MemoryDefaultBackgroundColor = (Color) parameters.get(MEMORY_DEFAULT_BACKGROUND_COLOR_PARAM);
+		m.DefaultCodeColor = (Color) parameters.get(DEFAULT_CODE_COLOR_PARAM);
+		m.HintTextColor = (Color) parameters.get(HINT_TEXT_COLOR_PARAM);
+		m.ConsoleBackgroundColor = (Color) parameters.get(CONSOLE_BACKGROUND_COLOR_PARAM);
+		m.ConsoleTextColor = (Color) parameters.get(CONSOLE_TEXT_COLOR_PARAM);
 		m.CodeColor1 = (Color) parameters.get(CODE_COLOR1_PARAM);
 		m.CodeColor2 = (Color) parameters.get(CODE_COLOR2_PARAM);
 		m.CodeColor3 = (Color) parameters.get(CODE_COLOR3_PARAM);
@@ -141,7 +147,7 @@ public class StackGuard extends DemoApplet {
 
 		g.setColor(m.BackgroundColor);
 		g.fillRect(XADD + 10, YADD + MAXHEIGHT - 40, MAXWIDTH - 10, 30);
-		g.setColor(Color.white);
+		g.setColor(m.HintTextColor);
 		g.drawString(m.sExplanation, XADD + 10, YADD + MAXHEIGHT - 20);
 
 		Font f = new Font("Monospaced", Font.PLAIN, 16);
@@ -164,6 +170,8 @@ public class StackGuard extends DemoApplet {
 		int XLoop, YLoop;
 		String sHex;
 
+		g.setFont(new Font("Monospaced", Font.PLAIN, 15));
+		
 		for (XLoop = 0; XLoop < 17; XLoop++) {
 			g.setColor(Color.gray);
 			g.drawLine(XMEMADD + XLoop * MEMSPACING, YMEMADD, XMEMADD + XLoop * MEMSPACING, YMEMADD + 256);
@@ -193,10 +201,10 @@ public class StackGuard extends DemoApplet {
 				g.drawString(m.Memory[YLoop * 16 + XLoop].Contents, XMEMADD + XLoop * MEMSPACING + (MEMSPACING / 4), YMEMADD + YLoop * MEMSPACING + (MEMSPACING * 3 / 4 + 1));
 			}
 
-		g.setColor(Color.darkGray);
+		g.setColor(m.ConsoleBackgroundColor);
 		g.fillRect(XOUTPUTADD, YOUTPUTADD, OUTPUTWIDTH, OUTPUTHEIGHT);
 
-		g.setColor(Color.white);
+		g.setColor(m.ConsoleTextColor);
 		for (Loop = 0; Loop < 5; Loop++) {
 			g.drawString(m.Output[Loop], XOUTPUTADD + 2, YOUTPUTADD + Loop * OUTPUTSPACING + (OUTPUTSPACING * 3 / 4));
 		}

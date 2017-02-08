@@ -46,9 +46,9 @@ public class SpockMachineContext extends MachineContext {
 		Output[2] = "";
 		Output[3] = "";
 		Output[4] = "";
-		Code[0] = new LineOfCode("#include <stdio.h>", Color.white);
-		Code[1] = new LineOfCode("#include <string.h>", Color.white);
-		Code[2] = new LineOfCode("", Color.white);
+		Code[0] = new LineOfCode("#include <stdio.h>", DefaultCodeColor);
+		Code[1] = new LineOfCode("#include <string.h>", DefaultCodeColor);
+		Code[2] = new LineOfCode("", DefaultCodeColor);
 		Code[3] = new LineOfCode("int check_password()", CodeColor1);
 		Code[4] = new LineOfCode("{", CodeColor1);
 		Code[5] = new LineOfCode("  char correct_password = 'F';", CodeColor1);
@@ -77,7 +77,7 @@ public class SpockMachineContext extends MachineContext {
 			} else if (Loop <= 0x6A) {
 				Memory[Loop] = new MemorySpot("", StackContentsColor, CodeColor1);
 			} else {
-				Memory[Loop] = new MemorySpot("", Color.white, Color.darkGray);
+				Memory[Loop] = new MemorySpot("", MemoryDefaultForegroundColor, MemoryDefaultBackgroundColor);
 			}
 		}
 		return true;
@@ -243,8 +243,8 @@ public class SpockMachineContext extends MachineContext {
 			}
 			for (Loop = 0xC0; Loop < 256; Loop++) {
 				Memory[Loop].Contents = "";
-				Memory[Loop].FGColor = Color.white;
-				Memory[Loop].BGColor = Color.darkGray;
+				Memory[Loop].FGColor = MemoryDefaultForegroundColor;
+				Memory[Loop].BGColor = MemoryDefaultBackgroundColor;
 			}
 			Memory[0x6A].Contents = " ";
 			Memory[0x17].Contents = "*";

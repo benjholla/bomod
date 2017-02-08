@@ -82,7 +82,7 @@ public class StacksMachineContext extends MachineContext {
 			} else if (Loop <= 0x5D) {
 				Memory[Loop] = new MemorySpot("", StackContentsColor, CodeColor2);
 			} else {
-				Memory[Loop] = new MemorySpot("", StackContentsColor, Color.darkGray);
+				Memory[Loop] = new MemorySpot("", StackContentsColor, MemoryDefaultBackgroundColor);
 			}
 		}
 		return true;
@@ -252,23 +252,23 @@ public class StacksMachineContext extends MachineContext {
 		case 11:
 			TheStack[6].Contents = "";
 			TheStack[6].FGColor = StackContentsColor;
-			TheStack[6].BGColor = Color.darkGray;
+			TheStack[6].BGColor = MemoryDefaultBackgroundColor;
 			TheStack[7].Contents = "";
 			TheStack[7].FGColor = StackContentsColor;
-			TheStack[7].BGColor = Color.darkGray;
+			TheStack[7].BGColor = MemoryDefaultBackgroundColor;
 			Memory[0xC6] = TheStack[6];
 			Memory[0xC7] = TheStack[7];
 			break;
 		case 12:
 			TheStack[3].Contents = "";
-			TheStack[3].FGColor = Color.white;
-			TheStack[3].BGColor = Color.darkGray;
+			TheStack[3].FGColor = MemoryDefaultForegroundColor;
+			TheStack[3].BGColor = MemoryDefaultBackgroundColor;
 			TheStack[4].Contents = "";
-			TheStack[4].FGColor = Color.white;
-			TheStack[4].BGColor = Color.darkGray;
+			TheStack[4].FGColor = MemoryDefaultForegroundColor;
+			TheStack[4].BGColor = MemoryDefaultBackgroundColor;
 			TheStack[5].Contents = "";
-			TheStack[5].FGColor = Color.white;
-			TheStack[5].BGColor = Color.darkGray;
+			TheStack[5].FGColor = MemoryDefaultForegroundColor;
+			TheStack[5].BGColor = MemoryDefaultBackgroundColor;
 			Memory[0xC3] = TheStack[3];
 			Memory[0xC4] = TheStack[4];
 			Memory[0xC5] = TheStack[5];
@@ -291,24 +291,24 @@ public class StacksMachineContext extends MachineContext {
 			break;
 		case 16:
 			TheStack[3].Contents = "";
-			TheStack[3].FGColor = Color.white;
-			TheStack[3].BGColor = Color.darkGray;
+			TheStack[3].FGColor = MemoryDefaultForegroundColor;
+			TheStack[3].BGColor = MemoryDefaultBackgroundColor;
 			TheStack[4].Contents = "";
-			TheStack[4].FGColor = Color.white;
-			TheStack[4].BGColor = Color.darkGray;
+			TheStack[4].FGColor = MemoryDefaultForegroundColor;
+			TheStack[4].BGColor = MemoryDefaultBackgroundColor;
 			Memory[0xC3] = TheStack[3];
 			Memory[0xC4] = TheStack[4];
 			break;
 		case 17:
 			TheStack[0].Contents = "";
-			TheStack[0].FGColor = Color.white;
-			TheStack[0].BGColor = Color.darkGray;
+			TheStack[0].FGColor = MemoryDefaultForegroundColor;
+			TheStack[0].BGColor = MemoryDefaultBackgroundColor;
 			TheStack[1].Contents = "";
-			TheStack[1].FGColor = Color.white;
-			TheStack[1].BGColor = Color.darkGray;
+			TheStack[1].FGColor = MemoryDefaultForegroundColor;
+			TheStack[1].BGColor = MemoryDefaultBackgroundColor;
 			TheStack[2].Contents = "";
-			TheStack[2].FGColor = Color.white;
-			TheStack[2].BGColor = Color.darkGray;
+			TheStack[2].FGColor = MemoryDefaultForegroundColor;
+			TheStack[2].BGColor = MemoryDefaultBackgroundColor;
 			Memory[0xC0] = TheStack[0];
 			Memory[0xC1] = TheStack[1];
 			Memory[0xC2] = TheStack[2];
