@@ -17,6 +17,13 @@ The original demos were created as Java Applets to be viewed through a web brows
 This repository has made the following changes to the original demo source code.
 
 ## Change Log
+
+**[Release 3](https://github.com/benjholla/bomod/releases/tag/bomod_r3)**
+
+1. Parameterized more display settings
+2. Added a presentation mode option since the default setting was hard to see on some low contrast projectors (each demo now prompts the user to select between presentation or classic color scheme modes)
+3. Bug fix for display glitch on resetting demos
+
 **[Release 2](https://github.com/benjholla/bomod/releases/tag/bomod_r2)**
 
 1. Refined example code to use standard variable/function naming conventions
