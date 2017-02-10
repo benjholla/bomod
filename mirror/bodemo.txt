@@ -1,0 +1,64 @@
+Script started on Tue Oct 2 12:12:12 2001
+[crandaj@node55-20 bodemo]$ ls -l
+total 48
+-rw-rw-r-- 1 crandaj crandaj 0 Oct 2 12:12 bodemo.txt
+-rw-rw-r-- 1 crandaj crandaj 265 Oct 2 12:10 myfile.txt
+-rw-rw-r-- 1 crandaj crandaj 265 Oct 2 12:09 myfile_bo.txt
+-rw-rw-r-- 1 crandaj crandaj 67 Oct 2 12:10 myfile_ok.txt
+-rwsrwsr-x 1 root root 31479 Oct 2 12:06 printtxt
+-rw-rw-r-- 1 crandaj crandaj 354 Oct 2 12:06 printtxt.c
+[crandaj@node55-20 bodemo]$ cat printtxt.c
+// printtxt.c
+// Jedidah Crandall, crandaj@pr.erau.edu
+// 2 October 2001
+#include <stdio.h>
+typedef char t_BUFF[256];
+FILE *fIn;
+void PrintFile()
+{
+t_BUFF MyBuff;
+
+fgets(MyBuff, 512, fIn);
+puts(MyBuff);
+}
+int main()
+{
+fIn = fopen("myfile.txt", "r");
+puts("myfile.txt has the following contents:");
+PrintFile();
+fclose(fIn);
+return 0;
+}
+[crandaj@node55-20 bodemo]$ cat myfile_ok.txt
+I'm just a little black rain cloud, pay no attention to little me.
+[crandaj@node55-20 bodemo]$ cat myfile_bo.txt
+ë^‰v1ÀˆF‰F°‰óçNçVÍ€1Û‰Ø@Í€èÜÿÿÿ/bin/shêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêê
+êêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêê
+êêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêê
+êêêêêêêêêêêêøüÿ¿ðûÿ¿
+[crandaj@node55-20 bodemo]$ hexdump myfile_bo.txt
+0000000 1feb 895e 0876 c031 4688 8907 0c46 0bb0
+0000010 f389 4e8d 8d08 0c56 80cd db31 d889 cd40
+0000020 e880 ffdc ffff 622f 6e69 732f 9068 9090
+0000030 9090 9090 9090 9090 9090 9090 9090 9090
+*
+0000100 fcf8 bfff fbf0 bfff 000a 
+0000109 
+[crandaj@node55-20 bodemo]$ cp myfile_ok.txt myfile.txt
+[crandaj@node55-20 bodemo]$ ./printtxt
+myfile.txt has the following contents:
+I'm just a little black rain cloud, pay no attention to little me.
+[crandaj@node55-20 bodemo]$ cp myfile_bo.txt myfile.txt
+[crandaj@node55-20 bodemo]$ ./printtxt
+myfile.txt has the following contents:
+ë^‰v1ÀˆF‰F°‰óçNçVÍ€1Û‰Ø@Í€èÜÿÿÿ/bin/shêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêê
+êêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêê
+êêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêêê
+êêêêêêêêêêêêøüÿ¿ðûÿ¿
+bash# whoami
+root 
+bash# exit
+exit
+[crandaj@node55-20 bodemo]$ exit
+exit
+Script done on Tue Oct 2 12:14:25 2001

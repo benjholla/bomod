@@ -1,0 +1,55 @@
+Script started on Fri Nov 16 14:30:56 2001
+[crandaj@node55-20 nsfsecurity]$ cat spock.c
+#include <stdio.h>
+#include <string.h>
+int PasswordOkay()
+{
+char GoodPassword = 'F';
+char Password [8];
+gets(Password);
+if (!strcmp(Password, "SPOCKSUX"))
+GoodPassword = 'T';
+return (GoodPassword == 'T');
+}
+void main()
+{
+puts("Enter Password:");
+if (PasswordOkay())
+puts("Hello, Dr. Bones.");
+else
+puts("Access denied.");
+}
+[crandaj@node55-20 nsfsecurity]$ gcc spock.c -o spock
+spock.c: In function `main':
+spock.c:16: warning: return type of `main' is not `int'
+/tmp/ccSKfmN31.o: In function `PasswordOkay':
+/tmp/ccSKfmN31.o(.text+0xf): the `gets' function is dangerous and should not be used.
+[crandaj@node55-20 nsfsecurity]$ its4 spock.c
+spock.c:9:(Urgent) gets
+The input buffer can almost always be overflowed.
+Use fgets(buf,size,stdin) instead.
+----------------
+[crandaj@node55-20 nsfsecurity]$ its4 spinshell.c
+spinshell.c:37:(Urgent) fprintf
+Non-constant format strings can often be attacked.
+Use a constant format string.
+----------------
+spinshell.c:35:(Urgent) printf
+Non-constant format strings can often be attacked.
+Use a constant format string.
+----------------
+spinshell.c:25:(Very Risky) strcat
+This function is high risk for buffer overflows
+Use strncat instead.
+----------------
+spinshell.c:16:(Risky) fopen
+Can be involved in a race condition if you open things after a poor check. For
+example, don't check to see if something is not a symbolic link before opening
+it. Open it, then check bt querying the resulting object. Don't run tests on
+symbolic file names...
+Perform all checks AFTER the open, and based on the returned object, not a
+symbolic name.
+----------------
+[crandaj@node55-20 nsfsecurity]$ exit
+exit
+Script done on Fri Nov 16 14:31:20 2001
