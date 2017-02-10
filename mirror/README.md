@@ -3,7 +3,7 @@
 
 This directory contains is a mirror of the [original Buffer Overflow Module](http://nsfsecurity.pr.erau.edu/bom/) created by [NSF Award No. 0113627](http://www.nsf.gov/awardsearch/showAward?AWD_ID=0113627). This mirror is provided with permission of the lead author Dr. Susan Gerhart in response to the now defunct [http://nsfsecurity.pr.erau.edu](http://nsfsecurity.pr.erau.edu/) subdomain. An index of the original Buffer Overflow Module resources is provided below.
 
-**Note:* The materials in this mirror were recovered from the last recorded update of the [nsfsecurity.pr.erau.edu/bom/index.html](https://web.archive.org/web/20140210111231/http://nsfsecurity.pr.erau.edu/bom/index.html) and [nsfsecurity.pr.erau.edu/bom\_docs.html](http://nsfsecurity.pr.erau.edu/bom_docs/bom_docs.html) pages, as seen by the Internet Archive project. The remaining materials were kindly provided by Dr. Susan Gerhart.
+**Note:* The materials in this mirror were recovered from the last recorded update of the [nsfsecurity.pr.erau.edu/bom/index.html](https://web.archive.org/web/20140210111231/http://nsfsecurity.pr.erau.edu/bom/index.html),  [nsfsecurity.pr.erau.edu/bom\_docs.html](http://nsfsecurity.pr.erau.edu/bom_docs/bom_docs.html), and [nsfsecurity.pr.erau.edu/bom\_docs/Demos/script.html](https://web.archive.org/web/20130708184753/http://nsfsecurity.pr.erau.edu/bom_docs/Demos/script.html) pages, as seen by the Internet Archive project. The remaining materials were kindly provided by Dr. Susan Gerhart.
 
 ## Introduction
 
