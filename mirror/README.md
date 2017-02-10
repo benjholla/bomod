@@ -44,7 +44,7 @@ You can download all of the demos in one archived file to run locally on your co
 
 For the abstract machine, there are some assumptions the user should be made aware of. (1) all library functions, such as gets() and puts(), are compiled inline and therefore don't require a function call, (2) allocation for a function's parameters and for its local variables takes place at the same time, and the return address is put on the stack last, (3) the stack grows "up" in memory, (4) it does not necessarily reflect the workings of any architecture or C compiler.
 
-**Instructor's guide to the module:** View Instructors' Guide for Demonstrating Buffer Overflows, with tips and info on presenting the module. This guide is included in the complete download.
+**Instructor's guide to the module**: [View Instructors' Guide for Demonstrating Buffer Overflows](instructor_guide.md), with tips and info on presenting the module. This guide is included in the complete download.
 
 **Download specific presentations, quizzes, and defense tools** at Buffer Overflow Resources. These resources are included in the complete module download.
 

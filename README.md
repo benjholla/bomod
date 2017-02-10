@@ -20,8 +20,8 @@ This repository has made the following changes to the original demo source code.
 
 **[Release 4](https://github.com/benjholla/bomod/releases/tag/bomod_r4)**
 
-1. Made presentation mode display text bold.
-2. Added [mirror](./mirror/README.md) of original materials now that the materials are no longer accessible on original host.
+1. Made code and memory display text bold
+2. Added [mirror](./mirror/README.md) of original materials now that the materials are no longer accessible on original host
 
 **[Release 3](https://github.com/benjholla/bomod/releases/tag/bomod_r3)**
 
@@ -47,12 +47,22 @@ This repository has made the following changes to the original demo source code.
 7. Minor display tweaks in demo graphics
 
 ## Running Demos
-This repository contains a `demos` folder with an executable JAR file for each demo (released previously as a Java web applet). To run a demo simply double click on the corresponding JAR file or invoke it directly from the command line (example: `java -jar SmasherDemo.jar`).
+This repository contains a `demos` folder with an executable JAR file for each demo (released previously as a Java web applet). To run a demo simply double click on the corresponding JAR file or invoke it directly from the command line (example: `java -jar SmasherDemo.jar`). At the prompt select either the classic or presentation mode color scheme.
 
-![Smasher Demo Screenshot](screenshot.png)
+### Classic Color Scheme
+
+This classic mode color scheme is a slightly modified color scheme corresponding to the original release.
+
+![Smasher Demo Screenshot](screenshot_classic_mode.png)
+
+### Presentation Mode Color Color Scheme
+
+The presentation mode color scheme is a color scheme that should lend itself better to presentations on low contrast projectors typically used in a classroom setting.
+
+![Smasher Demo Screenshot](screenshot_presentation_mode.png)
 
 ## Demo Descriptions
-The following descriptions of each demo are taken from [http://nsfsecurity.pr.erau.edu/bom/](http://nsfsecurity.pr.erau.edu/bom/).  Instructors should read the [Instructors' Guide for Demonstrating Buffer Overflows](http://nsfsecurity.pr.erau.edu/bom_docs/Demos/script.html) for additional details.
+The following descriptions of each demo are taken from [http://nsfsecurity.pr.erau.edu/bom/](http://nsfsecurity.pr.erau.edu/bom/).  Instructors should read the [Instructors' Guide for Demonstrating Buffer Overflows](./mirror/instructor_guide.md) for additional details.
 
 1. **Jumps**: Shows how stacks are used to keep track of subroutine calls.
 2. **Stacks**: An introduction to the way languages like C use stack frames to store local variables, pass variables from function to function by value and by reference, and also return control to the calling subroutine when the called subroutine exits. 
@@ -67,4 +77,4 @@ The following descriptions of each demo are taken from [http://nsfsecurity.pr.er
 - The color of the C code for each subroutine matches the color of the corresponding subroutine memory location.
 - A `$` indicates a return pointer to the subroutine with the same color as the `$` address.
 - A `?` indicates a stack canary.  If the value of a canary changes, then the stack guard check will fail.
-- For additional details see [http://nsfsecurity.pr.erau.edu/bom_docs/ppts/IntroToBOmod.ppt](http://nsfsecurity.pr.erau.edu/bom_docs/ppts/IntroToBOmod.ppt).
+- For additional details see the [Demo Interaction Guide](./mirror/HowToUseApplet.pdf).

@@ -142,7 +142,7 @@ public class StackGuard extends DemoApplet {
 	}
 
 	public void update(Graphics g) {
-		Font f2 = new Font("Arial", Font.PLAIN, 12);
+		Font f2 = new Font("Arial", Font.BOLD, 12);
 		g.setFont(f2);
 
 		g.setColor(m.BackgroundColor);
@@ -150,7 +150,7 @@ public class StackGuard extends DemoApplet {
 		g.setColor(m.HintTextColor);
 		g.drawString(m.sExplanation, XADD + 10, YADD + MAXHEIGHT - 20);
 
-		Font f = new Font("Monospaced", Font.PLAIN, 16);
+		Font f = new Font("Monospaced", Font.BOLD, 16);
 		g.setFont(f);
 
 		int Loop;
@@ -170,7 +170,7 @@ public class StackGuard extends DemoApplet {
 		int XLoop, YLoop;
 		String sHex;
 
-		g.setFont(new Font("Monospaced", Font.PLAIN, 15));
+		g.setFont(new Font("Monospaced", Font.BOLD, 15));
 		
 		for (XLoop = 0; XLoop < 17; XLoop++) {
 			g.setColor(Color.gray);
