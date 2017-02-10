@@ -1,5 +1,5 @@
 # Buffer Overflow Module (bomod)
-This project is a fork (and mirror) of the [original Buffer Overflow Module](http://nsfsecurity.pr.erau.edu/bom/) created by [NSF Award No. 0113627](http://www.nsf.gov/awardsearch/showAward?AWD_ID=0113627).
+This project is a fork (and [mirror](./mirror/README.md)) of the [original Buffer Overflow Module](http://nsfsecurity.pr.erau.edu/bom/) created by [NSF Award No. 0113627](http://www.nsf.gov/awardsearch/showAward?AWD_ID=0113627). The fork provides modifications to the interactive demos that enables the demos to run locally in a modern Java Runtime Environment. The fork also adds the option of a presentation mode color scheme to the demos for low contrast projectors used in classroom environments. The [mirror](./mirror/README.md) contained in this repository is an indexed copy of the materials originally hosted at [http://nsfsecurity.pr.erau.edu](http://nsfsecurity.pr.erau.edu) before the subdomain became inaccessible.
 
 ## Module Overview
 
@@ -21,7 +21,7 @@ This repository has made the following changes to the original demo source code.
 **[Release 4](https://github.com/benjholla/bomod/releases/tag/bomod_r4)**
 
 1. Made presentation mode display text bold.
-2. Added mirror of original materials now that the materials are no longer accessible on original host.
+2. Added [mirror](./mirror/README.md) of original materials now that the materials are no longer accessible on original host.
 
 **[Release 3](https://github.com/benjholla/bomod/releases/tag/bomod_r3)**
 
