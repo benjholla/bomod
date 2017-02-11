@@ -30,7 +30,7 @@ You can download all of the demos in one archived file to run locally on your co
 
 **Or view each demo online:** Simply click on a link below to open the desired demo, then click the animation buttons at the top of the screen. You may need to wait a moment for the applet to load. For help using the demos, download a PowerPoint presentation on [How to use the Demo applets](HowToUseApplet.pdf).
 
-***Note:*** The original *Stacks*, *Spock*, *Smasher*, *StackGuard*, and *Jumps* applets are no longer supported by most modern browsers and the original applet HTML pages could not be recovered for this mirror. Please see the [forked version of these modules](../README.md) if you wish to run them in a Java 1.7+ environment. The *its4demo* and *bodemo* outputs are linked below.
+**Note**: The original *Stacks*, *Spock*, *Smasher*, *StackGuard*, and *Jumps* applets are no longer supported by most modern browsers and the original applet HTML pages could not be recovered for this mirror. Please see the [forked version of these modules](../README.md) if you wish to run them in a Java 1.7+ environment. The *its4demo* and *bodemo* outputs are linked below.
 
 - **Stacks**: An introduction to the way languages like C use stack frames to store local variables, pass variables from function to function by value and by reference, and also return control to the calling subroutine when the called subroutine exits. 
 - **Spock**: Demonstrates what is commonly called a "variable attack" buffer overflow, where the target is data. 
