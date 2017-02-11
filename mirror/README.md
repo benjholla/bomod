@@ -3,7 +3,7 @@
 
 This directory contains is a mirror of the [original Buffer Overflow Module](http://nsfsecurity.pr.erau.edu/bom/) created by [NSF Award No. 0113627](http://www.nsf.gov/awardsearch/showAward?AWD_ID=0113627). This mirror is provided with permission of the lead author Dr. Susan Gerhart in response to the now defunct [http://nsfsecurity.pr.erau.edu](http://nsfsecurity.pr.erau.edu/) subdomain. An index of the original Buffer Overflow Module resources is provided below.
 
-**Note:* The materials in this mirror were recovered from the last recorded update of the [nsfsecurity.pr.erau.edu/bom/index.html](https://web.archive.org/web/20140210111231/http://nsfsecurity.pr.erau.edu/bom/index.html),  [nsfsecurity.pr.erau.edu/bom\_docs.html](http://nsfsecurity.pr.erau.edu/bom_docs/bom_docs.html), and [nsfsecurity.pr.erau.edu/bom\_docs/Demos/script.html](https://web.archive.org/web/20130708184753/http://nsfsecurity.pr.erau.edu/bom_docs/Demos/script.html) pages, as seen by the Internet Archive project. The remaining materials were kindly provided by Dr. Susan Gerhart.
+**Note:** The materials in this mirror were recovered from the last recorded update of the [nsfsecurity.pr.erau.edu/bom/index.html](https://web.archive.org/web/20140210111231/http://nsfsecurity.pr.erau.edu/bom/index.html),  [nsfsecurity.pr.erau.edu/bom\_docs.html](http://nsfsecurity.pr.erau.edu/bom_docs/bom_docs.html), and [nsfsecurity.pr.erau.edu/bom\_docs/Demos/script.html](https://web.archive.org/web/20130708184753/http://nsfsecurity.pr.erau.edu/bom_docs/Demos/script.html) pages, as seen by the Internet Archive project. The remaining materials were kindly provided by Dr. Susan Gerhart.
 
 ## Introduction
 
@@ -30,7 +30,7 @@ You can download all of the demos in one archived file to run locally on your co
 
 **Or view each demo online:** Simply click on a link below to open the desired demo, then click the animation buttons at the top of the screen. You may need to wait a moment for the applet to load. For help using the demos, download a PowerPoint presentation on [How to use the Demo applets](HowToUseApplet.pdf).
 
-***Note:*** The original *Stacks*, *Spock*, *Smasher*, *StackGuard*, and *Jumps* applets are no longer supported by most modern browsers and the original applet HTML pages could not be recovered for this mirror. Please see the [forked version of these modules](../README.md) if you wish to run them in a Java 1.7+ environment. The *its4demo* and *bodemo* outputs are linked below.
+**Note**: The original *Stacks*, *Spock*, *Smasher*, *StackGuard*, and *Jumps* applets are no longer supported by most modern browsers and the original applet HTML pages could not be recovered for this mirror. Please see the [forked version of these modules](../README.md) if you wish to run them in a Java 1.7+ environment. The *its4demo* and *bodemo* outputs are linked below.
 
 - **Stacks**: An introduction to the way languages like C use stack frames to store local variables, pass variables from function to function by value and by reference, and also return control to the calling subroutine when the called subroutine exits. 
 - **Spock**: Demonstrates what is commonly called a "variable attack" buffer overflow, where the target is data. 
